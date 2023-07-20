@@ -1,0 +1,16 @@
+Sistema de Colegio PHP MYSQL Jquery Bootstrap PANEL-ADMINISTRADOR (2da Parte).
+
+Código fuente completo del Sistema de Colegio, desarrollo en PHP7 utilizando la librería Jquery como gestor de base de datos se utiliza MYSQL. Se puede personalizar según los requerimientos de la empresa. En el apartado de sección se podrá agregar, el periodo académico, el nivel o grado, el subgrado, el nombre de la sección o la letra, el curso dependiendo del subgrado, a su vez el docente que va a tener y la capacidad.
+Incluye :
+ ✅Login con roles: Administrador o director
+ ✅Registro de estudiantes
+ ✅Registro de profesores
+ ✅Registro de cursos
+ ✅Registro de grado
+ ✅Registro de subgrado
+ ✅Registro de secciones
+ ✅Registro de periodo académico
+ 
+NOMBRE DE LA BASE DE DATOS :sistema_escolar
+USUARIO:jjrokker
+CONTRASEÑA:11111
