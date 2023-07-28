@@ -394,26 +394,37 @@ $obj = $stmt->fetchObject();
       <input value="<?php echo $obj->nomstu;?>" name="nomstu" type="text" placeholder="Nombre y apellidos" class="form-control">
     </div>
   </div>
-
-
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="nombres">Edad</label>
-      <input value="<?php echo $obj->edast;?>" name="edast" type="text" class="form-control" placeholder="Edad">
+   
+  <div class="form-group col-md-6">
+      <label for="nombres">Grado</label>
+      <select required name="sexes" class="form-control">
+    <option value="<?php echo $obj->grado;?>"><?php echo $obj->grado;?></option>        
+    <option value=""><< >></option>
+    <option value="Primer año">Primer año</option>
+    <option value="Segundo año">Segundo año</option>
+    <option value="Tercer año">Tercer año</option>
+    
+    </select>
     </div>
 
-     <div class="form-group col-md-6">
-      <label for="nombres">Correo</label>
-      <input value="<?php echo $obj->correo;?>" name="correo" type="email" class="form-control" placeholder="Correo">
-    </div>
   </div>
-
-
-    <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="nombres">Dirección</label>
-      <input value="<?php echo $obj->direce;?>" name="direce" type="text" class="form-control" placeholder="Dirección">
+   
+  <div class="form-group col-md-6">
+      <label for="nombres">Grupo</label>
+      <select required name="sexes" class="form-control">
+    <option value="<?php echo $obj->grupo;?>"><?php echo $obj->grupo;?></option>        
+    <option value=""><< >></option>
+    <option value="A">"A""</option>
+    <option value="B">"B""</option>
+    <option value="C">"C""</option>
+    <option value="D">"D""</option>
+    <option value="E">"E""</option>
+    <option value="F">"F""</option>
+    
+    </select>
     </div>
+
+  </div>
 
     <div class="form-group col-md-6">
       <label for="nombres">Sexo</label>
@@ -434,11 +445,6 @@ $obj = $stmt->fetchObject();
       <input value="<?php echo $obj->fenac;?>" name="fenac" type="date" class="form-control">
     </div>
 
-     <div class="form-group col-md-6">
-      <label for="nombres">Usuario</label>
-      <input value="<?php echo $obj->usuario;?>" name="usuario" type="text" class="form-control" placeholder="Usuario">
-    </div>
-  </div>
 
         <div class="form-group">
           <button name="actualizar" type="submit" class="btn btn-primary  btn-block">Actualizar Registro</button>
@@ -487,19 +493,27 @@ $obj = $stmt->fetchObject();
                                     
                                     <div class="input-group">
                                        
-                                        <input type="email"  name="txtcors" required class="form-control" placeholder="Grado" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    
-                                    <div class="input-group">
-                                        <select class="form-control" required name="txtsexs">
+                                    <select class="form-control" required name="txtsexs">
                                           <option selected>GÉNERO</option>
                                           <option value="Masculino">Masculino</option>
                                           <option value="Femenino">Femenino</option>
                                         </select>
+    
+                                          </select>
+                                           
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    
+                                    <div class="input-group">
+                                    <select class="form-control" required name="txtcors">
+                                          <option selected>Grado</option>
+                                          <option value="Primer año">Primer año</option>
+                                          <option value="Segundo año">Segundo año</option>
+                                          <option value="Tercer año">Tercer año</option>
+                                          </select>
                                     </div>
                                 </div>
                             </div>
@@ -512,26 +526,23 @@ $obj = $stmt->fetchObject();
                                     
                                     <div class="input-group">
                                        
-                                        <input type="text"  name="txtedas" required class="form-control" placeholder="Grupo" />
+                                        <select class="form-control" required name="txtedas">
+                                          <option selected>Grupo</option>
+                                          <option value="A">"A""</option>
+                                          <option value="B">"B""</option>
+                                          <option value="C">"C""</option>
+                                          <option value="D">"D""</option>
+                                          <option value="E">"E""</option>
+                                          <option value="F">"F""</option>
+    
+                                           </select>
+                                               </div>
                                     </div>
                                 </div>
-                            </div>
+                           
 
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    
-                                    <div class="input-group">
-                                       
-                                        <input type="text"  name="txtdirs" required class="form-control" placeholder="Dirección" />
-                                    </div>
-                                </div>
-                            </div>
-                            
-                    </div>
-
+                           
                    
-
-                    <div class="form-row">
                         <div class="col-sm-6">
                                 <div class="form-group">
                                  
@@ -540,19 +551,9 @@ $obj = $stmt->fetchObject();
                                     </div>
                                 </div>
                             </div>
-                            
-                             <div class="col-sm-6">
-                                <div class="form-group">
-                                    
-                                    <div class="input-group">
-                                        <select class="form-control" required name="txtrol">
-                                          
-                                          <option value="4">Alumno</option>
-                                        </select>
-                                    </div>
-                                </div>
                             </div>
-                    </div>   
+                            
+                         
                    
 
                    <button name='agregar'>GUARDAR</button>
@@ -610,19 +611,11 @@ $obj = $stmt->fetchObject();
 
     $dnist=$_POST['txtdnis'];
     $nomstu=$_POST['txtnoms'];
-    $edast=$_POST['txtedas'];
-    $direce=$_POST['txtdirs'];
-    $correo=$_POST['txtcors'];
+    $grado=$_POST['txtcors'];
+    $grupo=$_POST['txtedas'];
     $sexes=$_POST['txtsexs'];
     $fenac=$_POST['txtfecs'];
   
-    $imgFile = $_FILES['foto']['name'];
-    $tmp_dir = $_FILES['foto']['tmp_name'];
-    $imgSize = $_FILES['foto']['size'];
-
-    $usuario=$_POST['txtusus'];
-    $clave=MD5($_POST['txtclas']);
-    $rol=$_POST['txtrol'];
   
   if(empty($dnist)){
    $errMSG = "Please enter your dni.";
@@ -630,15 +623,12 @@ $obj = $stmt->fetchObject();
   else if(empty($nomstu)){
    $errMSG = "Please Enter your name.";
   }
-  else if(empty($edast)){
-   $errMSG = "Please Enter your age.";
+  else if(empty($grado)){
+   $errMSG = "Please Enter your grado.";
   }
-  else if(empty($direce)){
-   $errMSG = "Please Enter your address.";
-  }
-
-  else if(empty($correo)){
-   $errMSG = "Please Enter your email.";
+ 
+  else if(empty($grupo)){
+   $errMSG = "Please Enter your grupo.";
   }
 
   else if(empty($sexes)){
@@ -648,62 +638,19 @@ $obj = $stmt->fetchObject();
    $errMSG = "Please Enter your birth.";
   }
 
-  else if(empty($imgFile)){
-   $errMSG = "Please Select Image File.";
-  }
-  else if(empty($usuario)){
-   $errMSG = "Please Enter your user.";
-  }
-
-  else if(empty($clave)){
-   $errMSG = "Please Enter your password.";
-  }
-  else if(empty($rol)){
-   $errMSG = "Please Enter your permission.";
-  }
-  else
-  {
-   $upload_dir = '../../Assets/img/subidas/'; // upload directory
- 
-   $imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); // get image extension
-  
-   // valid image extensions
-   $valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
-  
-   // rename uploading image
-   $foto = rand(1000,1000000).".".$imgExt;
-    
-   // allow valid image file formats
-   if(in_array($imgExt, $valid_extensions)){   
-    // Check file size '5MB'
-    if($imgSize < 5000000)    {
-     move_uploaded_file($tmp_dir,$upload_dir.$foto);
-    }
-    else{
-     $errMSG = "Sorry, your file is too large.";
-    }
-   }
-   else{
-    $errMSG = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";  
-   }
   }
   
   
   // if no error occured, continue ....
   if(!isset($errMSG))
   {
-   $stmt = $connect->prepare("INSERT INTO students(dnist, nomstu, edast, direce, correo,sexes,fenac,foto,usuario,clave,rol, state) VALUES(:dnist, :nomstu,:edast,:direce,:correo,:sexes,:fenac,:foto,:usuario,:clave,:rol, '1')");
+   $stmt = $connect->prepare("INSERT INTO students(dnist, nomstu, grado, grupo, sexes,fenac, state) VALUES(:dnist, :nomstu,:grado,:grupo,:sexes,:fenac, '1')");
    $stmt->bindParam(':dnist',$dnist);
    $stmt->bindParam(':nomstu',$nomstu);
-   $stmt->bindParam(':edast',$edast);
-   $stmt->bindParam(':direce',$direce);
-   $stmt->bindParam(':correo',$correo);
+   $stmt->bindParam(':grado',$grado);
+   $stmt->bindParam(':grupo',$grupo);
    $stmt->bindParam(':sexes',$sexes);
    $stmt->bindParam(':fenac',$fenac);
-   $stmt->bindParam(':foto',$foto);
-   $stmt->bindParam(':usuario',$usuario);
-   $stmt->bindParam(':clave',$clave);
-   $stmt->bindParam(':rol',$rol);
    
    if($stmt->execute())
    {
@@ -719,7 +666,7 @@ swal("¡Registrado!", "Agregado correctamente", "success").then(function() {
    }
 
   }
- }
+ 
 ?>
 
 
@@ -769,27 +716,24 @@ if(isset($_POST['actualizar'])){
 $idstu=trim($_POST['idstu']);
 $dnist=trim($_POST['dnist']);
 $nomstu=trim($_POST['nomstu']);
-$edast=trim($_POST['edast']);
-$direce=trim($_POST['direce']);
-$correo=trim($_POST['correo']);
+$grado=trim($_POST['grado']);
+$grupo=trim($_POST['grupo']);
 $sexes=trim($_POST['sexes']);
 $fenac=trim($_POST['fenac']);
-$usuario=trim($_POST['usuario']);
+
 
 ///////// Fin informacion enviada por el formulario /// 
 
 ////////////// Actualizar la tabla /////////
 $consulta = "UPDATE students
-SET `dnist`= :dnist, `nomstu` = :nomstu, `edast` = :edast, `direce` = :direce, `correo` = :correo, `sexes` = :sexes,`fenac` = :fenac, `usuario` = :usuario WHERE `idstu` = :idstu";
+SET `dnist`= :dnist, `nomstu` = :nomstu, `grado` = :grado, `grupo` = :grupo,  `sexes` = :sexes,`fenac` = :fenac WHERE `idstu` = :idstu";
 $sql = $connect->prepare($consulta);
 $sql->bindParam(':dnist',$dnist,PDO::PARAM_STR, 25);
 $sql->bindParam(':nomstu',$nomstu,PDO::PARAM_STR, 25);
-$sql->bindParam(':edast',$edast,PDO::PARAM_STR,25);
-$sql->bindParam(':direce',$direce,PDO::PARAM_STR,25);
-$sql->bindParam(':correo',$correo,PDO::PARAM_STR,25);
+$sql->bindParam(':grado',$grado,PDO::PARAM_STR,25);
+$sql->bindParam(':grupo',$grupo,PDO::PARAM_STR,25);
 $sql->bindParam(':sexes',$sexes,PDO::PARAM_STR,25);
 $sql->bindParam(':fenac',$fenac,PDO::PARAM_STR,25);
-$sql->bindParam(':usuario',$usuario,PDO::PARAM_STR,25);
 $sql->bindParam(':idstu',$idstu,PDO::PARAM_INT);
 
 $sql->execute();

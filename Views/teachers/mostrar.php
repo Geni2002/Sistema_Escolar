@@ -288,7 +288,6 @@ logout</span>Cerrar sesión</a>
           <th>Grado</th>
           <th>Grupo</th>
           <th>Condición</th>
-          <th>Estado</th>
           <th>Editar</th>
           <th>Eliminar</th>
         </tr>
@@ -306,14 +305,7 @@ logout</span>Cerrar sesión</a>
                <td>
                        
 
-                        <?php if($producto->state==1)  { ?> 
-        <span class="badge badge-success">Activo</span>
-    <?php  }   else {?> 
-        <span class="badge badge-danger">No activo</span>
-        <?php  } ?>  
-                            
-                    </td>
-               <td>
+        
 <form method='POST' action='<?php $_SERVER['PHP_SELF'] ?>'>
 <input type='hidden' name='idtea' value="<?php echo  $producto->idtea; ?>">
 <button name='editar' class='btn btn-warning text-white'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></button>
@@ -397,40 +389,40 @@ $obj = $stmt->fetchObject();
       <label for="edad">Nombre y apellidos</label>
       <input value="<?php echo $obj->nomte;?>" name="nomte" type="text" placeholder="Nombre y apellidos" class="form-control">
     </div>
-  </div>
 
 
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="nombres">Sexo</label>
-      <select required name="sexte" class="form-control">
-    <option value="<?php echo $obj->sexte;?>"><?php echo $obj->sexte;?></option>        
-    <option value=""><< >></option>
-    <option value="Masculino">Masculino</option>
-    <option value="Femenino">Femenino</option>
+  <div class="form-group col-md-6">
+      <label for="nombres">Grado</label>
+      <select required name="sexes" class="form-control">
+    <option value="<?php echo $obj->grado;?>"><?php echo $obj->grado;?></option>        
+    <option value="Primer año">Primer año</option>
+    <option value="Segundo año">Segundo año</option>
+    <option value="Tercer año">Tercer año</option>
     
     </select>
     </div>
 
-     <div class="form-group col-md-6">
-      <label for="nombres">Correo</label>
-      <input value="<?php echo $obj->correo;?>" name="correo" type="email" class="form-control" placeholder="Correo">
+   
+  <div class="form-group col-md-6">
+      <label for="nombres">Grupo</label>
+      <select required name="sexes" class="form-control">
+    <option value="<?php echo $obj->grupo;?>"><?php echo $obj->grupo;?></option>        
+    <option value="A">"A""</option>
+    <option value="B">"B""</option>
+    <option value="C">"C""</option>
+    <option value="D">"D""</option>
+    <option value="E">"E""</option>
+    <option value="F">"F""</option>
+    </select>
+    </div>
+
+
+  <div class="form-group col-md-6">
+      <label for="edad">Condicion</label>
+      <input value="<?php echo $obj->condicion;?>" name="condicion" type="text" placeholder="condicion" class="form-control">
     </div>
   </div>
-
-
-    <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="nombres">Teléfono</label>
-      <input value="<?php echo $obj->telet;?>" name="telet" maxlength="9"  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" type="text" class="form-control" placeholder="Teléfono móvil">
-    </div>
-
-     <div class="form-group col-md-6">
-      <label for="nombres">Usuario</label>
-      <input value="<?php echo $obj->usuario;?>" name="usuario" type="text" class="form-control" placeholder="Usuario">
-    </div>
-  </div>
-
+  
 
         <div class="form-group">
           <button name="actualizar" type="submit" class="btn btn-primary  btn-block">Actualizar Registro</button>
@@ -479,8 +471,12 @@ $obj = $stmt->fetchObject();
                                 <div class="form-group">
                                     
                                     <div class="input-group">
-                                       
-                                        <input type="email"  name="txtcorr" required class="form-control" placeholder="Correo" />
+                                    <select class="form-control" required name="txtcorr">
+                                          <option selected>Grado</option>
+                                          <option value="Primer año">Primer año</option>
+                                          <option value="Segundo año">Segundo año</option>
+                                          <option value="Tercer año">Tercer año</option>
+                                          </select>
                                     </div>
                                 </div>
                             </div>
@@ -489,74 +485,32 @@ $obj = $stmt->fetchObject();
                                     
                                     <div class="input-group">
                                         <select class="form-control" required name="txtsex">
-                                          <option selected>GÉNERO</option>
-                                          <option value="Masculino">Masculino</option>
-                                          <option value="Femenino">Femenino</option>
-                                         
-                                        </select>
+                                          <option selected>Grupo</option>
+                                          <option value="A">"A""</option>
+                                          <option value="B">"B""</option>
+                                          <option value="C">"C""</option>
+                                          <option value="D">"D""</option>
+                                          <option value="E">"E""</option>
+                                          <option value="F">"F""</option>
+                                           </select>
                                     </div>
                                 </div>
                             </div>
                     </div>
-
-                    <button id="btnEndStep1">NEXT</button>
-                </div>
-                <div id="step2" class="hideMe"> 
-                   <div class="form-row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    
-                                    <div class="input-group">
-                                       
-                                        <input type="text"  name="txttel" maxlength="9" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required class="form-control" placeholder="Teléfono" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
+                     
+                    <div class="form-row">
+                    <div class="col-sm-6">
                                 <div class="form-group">
                                  
                                     <div class="input-group">       
-                                        <input type="text"  name="txtusua" placeholder="Usuario" required class="form-control"/>
+                                        <input type="text"  name="txtperm" placeholder="Condicion" required class="form-control"/>
                                     </div>
                                 </div>
                             </div>
-                    </div> 
-
-
-                    <div class="form-row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                 
-                                    <div class="input-group">       
-                                        <input type="password"  name="txtcla" placeholder="Contraseña" required class="form-control"/>
-                                    </div>
-                                </div>
-                            </div>
-
-                             <div class="col-sm-6">
-                                <div class="form-group">
-                                    
-                                    <div class="input-group">
-                                        <select class="form-control" required name="txtperm">
-                                          <option selected>Permisos</option>
-                                          <option value="2">Docente</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>   
-                    <div class="form-row">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label for="modal_contact_firstname">Foto</label>
-                                    <div class="input-group">
-                                     <input type="file" id="imagen" name="foto" onchange="readURL(this);" data-toggle="tooltip">
-                 <img id="blah"  alt="your image" style="max-width:90px;" />
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>  
+                    </div>
+            
+                           
+                    
 
 
                    <button name='agregar'>GUARDAR</button>
@@ -615,88 +569,37 @@ $obj = $stmt->fetchObject();
 
     $dnite=$_POST['txtdni'];
     $nomte=$_POST['txtnom'];
-    $correo=$_POST['txtcorr'];
-    $sexte=$_POST['txtsex'];
-    $telet=$_POST['txttel'];
-    $usuario=$_POST['txtusua'];
-    $clave=MD5($_POST['txtcla']);
-    $rol=$_POST['txtperm'];
+    $grado=$_POST['txtcorr'];
+    $grupo=$_POST['txtsex'];
+    $condicion=$_POST['txtperm'];
 
-    $imgFile = $_FILES['foto']['name'];
-    $tmp_dir = $_FILES['foto']['tmp_name'];
-    $imgSize = $_FILES['foto']['size'];
-  
   if(empty($dnite)){
    $errMSG = "Please enter your dni.";
   }
   else if(empty($nomte)){
    $errMSG = "Please Enter your name.";
   }
-  else if(empty($sexte)){
-   $errMSG = "Please Enter your sexo.";
+  else if(empty($grado)){
+   $errMSG = "Please Enter your grado.";
   }
-  else if(empty($correo)){
-   $errMSG = "Please Enter your email.";
-  }
-
-  else if(empty($telet)){
-   $errMSG = "Please Enter your phone.";
+  else if(empty($grupo)){
+   $errMSG = "Please Enter your grupo.";
   }
 
-  else if(empty($imgFile)){
-   $errMSG = "Please Select Image File.";
-  }
-  else if(empty($usuario)){
-   $errMSG = "Please Enter your user.";
-  }
-
-  else if(empty($clave)){
-   $errMSG = "Please Enter your password.";
-  }
-  else if(empty($rol)){
-   $errMSG = "Please Enter your permission.";
-  }
-  else
-  {
-   $upload_dir = '../../Assets/img/subidas/'; // upload directory
- 
-   $imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); // get image extension
-  
-   // valid image extensions
-   $valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
-  
-   // rename uploading image
-   $foto = rand(1000,1000000).".".$imgExt;
-    
-   // allow valid image file formats
-   if(in_array($imgExt, $valid_extensions)){   
-    // Check file size '5MB'
-    if($imgSize < 5000000)    {
-     move_uploaded_file($tmp_dir,$upload_dir.$foto);
-    }
-    else{
-     $errMSG = "Sorry, your file is too large.";
-    }
-   }
-   else{
-    $errMSG = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";  
-   }
+  else if(empty($condicion)){
+   $errMSG = "Please Enter your condicion.";
   }
   
   
   // if no error occured, continue ....
   if(!isset($errMSG))
   {
-   $stmt = $connect->prepare("INSERT INTO teachers(dnite, nomte, sexte, correo, telet,foto,usuario,clave,rol, state) VALUES(:dnite, :nomte,:sexte,:correo,:telet,:foto,:usuario,:clave,:rol, '1')");
+   $stmt = $connect->prepare("INSERT INTO teachers(dnite, nomte, grado, grupo, condicion ) VALUES(:dnite, :nomte,:grado,:grupo,:condicion)");
    $stmt->bindParam(':dnite',$dnite);
    $stmt->bindParam(':nomte',$nomte);
-   $stmt->bindParam(':sexte',$sexte);
-   $stmt->bindParam(':correo',$correo);
-   $stmt->bindParam(':telet',$telet);
-   $stmt->bindParam(':foto',$foto);
-   $stmt->bindParam(':usuario',$usuario);
-   $stmt->bindParam(':clave',$clave);
-   $stmt->bindParam(':rol',$rol);
+   $stmt->bindParam(':grado',$grado);
+   $stmt->bindParam(':grupo',$grupo);
+   $stmt->bindParam(':condicion',$condicion);
    
    if($stmt->execute())
    {
@@ -762,23 +665,21 @@ if(isset($_POST['actualizar'])){
 $idtea=trim($_POST['idtea']);
 $dnite=trim($_POST['dnite']);
 $nomte=trim($_POST['nomte']);
-$sexte=trim($_POST['sexte']);
-$correo=trim($_POST['correo']);
-$telet=trim($_POST['telet']);
-$usuario=trim($_POST['usuario']);
+$grado=trim($_POST['grado']);
+$grupo=trim($_POST['grupo']);
+$condicion=trim($_POST['condicion']);
 
 ///////// Fin informacion enviada por el formulario /// 
 
 ////////////// Actualizar la tabla /////////
 $consulta = "UPDATE teachers
-SET `dnite`= :dnite, `nomte` = :nomte, `sexte` = :sexte, `correo` = :correo, `telet` = :telet,  `usuario` = :usuario WHERE `idtea` = :idtea";
+SET `dnite`= :dnite, `nomte` = :nomte, `grado` = :grado, `grupo` = :grupo, `condicion` = :condicion  WHERE `idtea` = :idtea";
 $sql = $connect->prepare($consulta);
 $sql->bindParam(':dnite',$dnite,PDO::PARAM_STR, 25);
 $sql->bindParam(':nomte',$nomte,PDO::PARAM_STR, 25);
-$sql->bindParam(':sexte',$sexte,PDO::PARAM_STR,25);
-$sql->bindParam(':correo',$correo,PDO::PARAM_STR,25);
-$sql->bindParam(':telet',$telet,PDO::PARAM_STR,25);
-$sql->bindParam(':usuario',$usuario,PDO::PARAM_STR,25);
+$sql->bindParam(':grado',$grado,PDO::PARAM_STR,25);
+$sql->bindParam(':grupo',$grupo,PDO::PARAM_STR,25);
+$sql->bindParam(':condicion',$condicion,PDO::PARAM_STR,25);
 $sql->bindParam(':idtea',$idtea,PDO::PARAM_INT);
 
 $sql->execute();

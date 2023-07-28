@@ -55,9 +55,9 @@ $pdf->SetFont('Arial','B',10);
 $pdf->Cell(15, 12, utf8_decode('N°'),1,0,'C',1);
 $pdf->Cell(25, 12, utf8_decode('DNI'),1,0,'C',1);
 $pdf->Cell(65, 12, utf8_decode('Nombre'),1,0,'C',1);
-$pdf->Cell(55, 12, utf8_decode('Correo'),1,0,'C',1);
-$pdf->Cell(30, 12, utf8_decode('Teléfono'),1,0,'C',1);
 $pdf->Cell(25, 12, utf8_decode('Direccion'),1,1,'C',1);
+$pdf->Cell(30, 12, utf8_decode('Teléfono'),1,0,'C',1);
+$pdf->Cell(55, 12, utf8_decode('Correo'),1,0,'C',1);
 
 
 //$conexion=mysqli_connect("localhost","root","","sistema_escolar")or die("error conexion");
@@ -79,9 +79,10 @@ $pdf->SetDrawColor(65, 61, 61);
 $pdf->Cell(15, 8, utf8_decode($row['idfa']),'B',0,'C',1);
 $pdf->Cell(25, 8, utf8_decode($row['dnifa']),'B',0,'C',1);
 $pdf->Cell(65, 8, utf8_decode($row['nomfa']),'B',0,'C',1);
-$pdf->Cell(55, 8, utf8_decode($row['correo']),'B',0,'C',1);
-$pdf->Cell(30, 8, utf8_decode($row['telefa']),'B',0,'C',1);
 $pdf->Cell(25, 8, utf8_decode($row['direc']),'B',0,'C',1);
+$pdf->Cell(30, 8, utf8_decode($row['telefa']),'B',0,'C',1);
+$pdf->Cell(55, 8, utf8_decode($row['correo']),'B',0,'C',1);
+
   
     /*$pdf->Cell(25,9, $row['status'], 0 ,1, 'C',1);*/
   

@@ -294,6 +294,9 @@ logout</span>Cerrar sesión</a>
                <td><?php echo $producto->grupo ?></td>
                <td><?php echo $producto->conducta?></td>
                <td>
+
+                
+        
 <form method='POST' action='<?php $_SERVER['PHP_SELF'] ?>'>
 <input type='hidden' name='idsub' value="<?php echo  $producto->idsub; ?>">
 <button name='editar' class='btn btn-warning text-white'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></button>
@@ -302,7 +305,7 @@ logout</span>Cerrar sesión</a>
                </td>
                <td>
 <form  onsubmit="return confirm('Realmente desea eliminar el registro?');" method='POST' action='<?php $_SERVER['PHP_SELF'] ?>'>
-<input type='hidden' name='idsub' value="<?php echo  $producto->idsub; ?>">
+<input type='hidden' name='idsub' value="<?php echo  $producto->idstu; ?>">
 <button name='eliminar' class='btn btn-danger text-white' ><i class='material-icons'  title='Delete'>&#xE872;</i></button>
 </form>
                </td>
@@ -315,7 +318,7 @@ logout</span>Cerrar sesión</a>
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
 
-                    <p>Mostrando <?php echo $productosPorPagina ?> de <?php echo $conteo ?> conductas  disponibles</p>
+                    <p>Mostrando <?php echo $productosPorPagina ?> de <?php echo $conteo ?> conductas disponibles</p>
                 </div>
                 <div class="col-xs-12 col-sm-6">
                     <p>Página <?php echo $pagina ?> de <?php echo $paginas ?> </p>
@@ -354,10 +357,10 @@ logout</span>Cerrar sesión</a>
 <?php 
 
 if (isset($_POST['editar'])){
-$idsub = $_POST['idsub'];
-$sql= "SELECT subgrade.idsub, degree.iddeg, degree.nomgra, subgrade.nomsub, subgrade.fere, GROUP_CONCAT(period.idper, '..', period.numperi, '..' SEPARATOR '__') AS period  FROM subgrade INNER JOIN degree ON subgrade.iddeg = degree.iddeg INNER JOIN period ON period.idper = degree.idper   WHERE idsub = :idsub  GROUP BY subgrade.idsub "; 
+$idstu = $_POST['idsub'];
+$sql= "SELECT * FROM subgrade WHERE idsub = :idsub"; 
 $stmt = $connect->prepare($sql);
-$stmt->bindParam(':idsub', $idsub, PDO::PARAM_INT); 
+$stmt->bindParam(':idsub', $idstu, PDO::PARAM_INT); 
 $stmt->execute();
 $obj = $stmt->fetchObject();
  
@@ -367,36 +370,50 @@ $obj = $stmt->fetchObject();
 
 <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>">
     <input value="<?php echo $obj->idsub;?>" name="idsub" type="hidden">
-  
   <div class="form-row">
     <div class="form-group col-md-6">
+      <label for="nombres">DNI</label>
+      <input value="<?php echo $obj->dnist;?>" maxlength="8"  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" name="dnist" type="text" class="form-control"  placeholder="DNI">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="edad">Nombre y apellidos</label>
+      <input value="<?php echo $obj->nomsub;?>" name="nomsub" type="text" placeholder="Nombre y apellidos" class="form-control">
+    </div>
+   
+  <div class="form-group col-md-6">
       <label for="nombres">Grado</label>
-      <select required name="iddeg" class="form-control" disabled>
-    <option value="<?php echo $obj->iddeg;?>"><?php echo $obj->nomgra;?></option>        
-    <option value=""><< >></option>
-
-    <?php 
-    $stmt = $connect->prepare('SELECT * FROM degree');
-    $stmt->execute();
-
-while($row=$stmt->fetch(PDO::FETCH_ASSOC))
-        {
-            extract($row);
-            ?>
-            <option value="<?php echo $iddeg; ?>"><?php echo $nomgra; ?></option>
-            <?php
-        }
-        ?>
-     ?>
+      <select required name="sexes" class="form-control">
+    <option value="<?php echo $obj->grado;?>"><?php echo $obj->grado;?></option>        
+    <option value="Primer año">Primer año</option>
+    <option value="Segundo año">Segundo año</option>
+    <option value="Tercer año">Tercer año</option>
+    
     </select>
     </div>
 
-    <div class="form-group col-md-6">
-      <label for="edad">Subgrado</label>
-      <input value="<?php echo $obj->nomsub;?>" name="nomsub" type="text" class="form-control">
+   
+  <div class="form-group col-md-6">
+      <label for="nombres">Grupo</label>
+      <select required name="sexes" class="form-control">
+    <option value="<?php echo $obj->grupo;?>"><?php echo $obj->grupo;?></option>        
+    <option value="A">"A""</option>
+    <option value="B">"B""</option>
+    <option value="C">"C""</option>
+    <option value="D">"D""</option>
+    <option value="E">"E""</option>
+    <option value="F">"F""</option>
+    
+    </select>
     </div>
 
   </div>
+ 
+  </div>
+    <div class="form-group col-md-6">
+      <label for="edad">Conducta</label>
+      <input value="<?php echo $obj->conducta;?>" name="conducta" type="text" placeholder="Conducta" class="form-control">
+    </div>
+    </div>
 
 
         <div class="form-group">
@@ -408,7 +425,7 @@ while($row=$stmt->fetch(PDO::FETCH_ASSOC))
 
 <!-- add Modal HTML -->
 <div class="modal fade" id="addEmployeeModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog " role="document">
             <form  enctype="multipart/form-data" method="POST"  autocomplete="off">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -419,69 +436,94 @@ while($row=$stmt->fetch(PDO::FETCH_ASSOC))
                             <span>&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <div class="form-row">
-                            
+                <div class="modal-body">
+                <div id="step1"> 
+
+                    <div class="form-row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="modal_contact_lastname">Periodo</label>
                                     <div class="input-group">
-                                         
-                         <select required  class="form-control" onchange="showselect(this.value)">
-                                        <option value="" >-Seleccione un periodo-</option>
-                                       <?php 
-                                       $stmt = $connect->prepare('SELECT * FROM period');
-                                        $stmt->execute();
-
-                                        while($row=$stmt->fetch(PDO::FETCH_ASSOC))
-                                        {
-                                            extract($row);
-                                            ?>
-
-                                            <option value="<?php echo $idper; ?>"><?php echo $numperi; ?></option>
-                                            <?php
-                                        }
-                                        ?>
-                                        ?>     
-
-                                      </select>
+                                        <input type="text"  name="txtdnis" maxlength="8" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required class="form-control" placeholder="DNI" />
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-sm-6" id="periodo">
+                            <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="modal_contact_lastname">Grado</label>
-                                    <div class="input-group">
-                                         
-                                      <select required name="iddeg" id="periodo" class="form-control">
-                                           <option value="">-- Seleccione una grado --</option>
-
-                                      </select>
+                                 
+                                    <div class="input-group">       
+                                        <input type="text"  name="txtnoms" placeholder="Nombre y apellidos" required class="form-control"/>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                    </div>
 
-
-                        <div class="form-row">
-                            <div class="col-sm-12">
+                    <div class="form-row">
+                            <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="modal_contact_firstname">Subgrado</label>
+                                    
                                     <div class="input-group">
+
+                                    <select class="form-control" required name="txtcors">
+                                          <option selected>Grado</option>
+                                          <option value="Primer año">Primer año</option>
+                                          <option value="Segundo año">Segundo año</option>
+                                          <option value="Tercer año">Tercer año</option>
                                        
-                                        <input type="text"  name="nomsub" required class="form-control" placeholder="Nombre del subgrado" />
+    
+                                          </select>
+                                           
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    
+                                    <div class="input-group">
+
+                                    <select class="form-control" required name="txtedas">
+                                          <option selected>Grupo</option>
+                                          <option value="A">"A""</option>
+                                          <option value="B">"B""</option>
+                                          <option value="C">"C""</option>
+                                          <option value="D">"D""</option>
+                                          <option value="E">"E""</option>
+                                          <option value="F">"F""</option>
+                                          </select>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+
+                    <div class="form-row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    
+                                    <div class="input-group">
+                                    
+                                    <div class="input-group">       
+                                        <input type="text"  name="txtsexs" placeholder="Conducta" required class="form-control"/>
+                                          
+                                        
+    
+                                        </div>
+                                               </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                           
                             
-                        </div>
-                    
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>
-                        <button  name='agregar' class="btn btn-primary">GUARDAR</button>
-                    </div>
+                         
+                   
+
+                   <button name='agregar'>GUARDAR</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>
+                </div>
+                
+            </div>   
+
+
                 </div>
             </form>
         </div>
@@ -519,48 +561,72 @@ while($row=$stmt->fetch(PDO::FETCH_ASSOC))
 
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-<?php
-if(isset($_POST["agregar"])){
 
-///////////// Informacion enviada por el formulario /////////////
-$nomsub=$_POST['nomsub'];
-$iddeg=$_POST['iddeg'];
+<?php  
 
-///////// Fin informacion enviada por el formulario /// 
+ if(isset($_POST['agregar']))
+ 
+  //$username = $_POST['user_name'];// user name
+  //$userjob = $_POST['user_job'];// user email
 
-////////////// Insertar a la tabla la informacion generada /////////
-$sql="insert into subgrade(nomsub,iddeg) 
-values(:nomsub,:iddeg)";
+
+    $dnist=$_POST['txtdnis'];
+    $nomsub=$_POST['txtnoms'];
+    $grado=$_POST['txtcors'];
+    $grupo=$_POST['txtedas'];
+    $conducta=$_POST['txtsexs'];
     
-$sql = $connect->prepare($sql);
-    
-$sql->bindParam(':nomsub',$nomsub,PDO::PARAM_STR, 25);
-$sql->bindParam(':iddeg',$iddeg,PDO::PARAM_STR, 25);
+  
+  
+  if(empty($dnist)){
+   $errMSG = "Please enter your dni.";
+  }
+  else if(empty($nomsub)){
+   $errMSG = "Please Enter your name.";
+  }
+  else if(empty($grado)){
+   $errMSG = "Please Enter your grado.";
+  }
+ 
+  else if(empty($grupo)){
+   $errMSG = "Please Enter your grupo.";
+  }
 
-    
-$sql->execute();
+  else if(empty($conducta)){
+   $errMSG = "Please Enter your conducta.";
+ 
 
-$lastInsertId = $connect->lastInsertId();
-if($lastInsertId>0){
-
-echo '<script type="text/javascript">
+  }
+  
+  
+  // if no error occured, continue ....
+  if(!isset($errMSG))
+  {
+   $stmt = $connect->prepare("INSERT INTO subgrade(dnist, nomsub, grado, grupo, conducta, state) VALUES(:dnist, :nomsub,:grado,:grupo,:conducta '1')");
+   $stmt->bindParam(':dnist',$dnist);
+   $stmt->bindParam(':nomsub',$nomsub);
+   $stmt->bindParam(':grado',$grado);
+   $stmt->bindParam(':grupo',$grupo);
+   $stmt->bindParam(':conducta',$conducta);
+   
+   if($stmt->execute())
+   {
+    echo '<script type="text/javascript">
 swal("¡Registrado!", "Agregado correctamente", "success").then(function() {
             window.location = "mostrar";
         });
         </script>';
-}
-else{
-    echo '<script type="text/javascript">
-swal("ERROR!", "No se pudo agregar", "error").then(function() {
-            window.location = "mostrar";
-        });
-        </script>';
+   }
+   else
+   {
+    $errMSG = "error while inserting....";
+   }
 
-print_r($sql->errorInfo()); 
-}
-
-}
+  }
+ 
 ?>
+
+
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -577,8 +643,8 @@ if(isset($_POST['eliminar'])){
 ////////////// Actualizar la tabla /////////
 $consulta = "DELETE FROM `subgrade` WHERE `idsub`=:idsub";
 $sql = $connect-> prepare($consulta);
-$sql -> bindParam(':idsub', $idsub, PDO::PARAM_INT);
-$idsub=trim($_POST['idsub']);
+$sql -> bindParam(':idsub', $idstu, PDO::PARAM_INT);
+$idstu=trim($_POST['idsub']);
 $sql->execute();
 
 if($sql->rowCount() > 0)
@@ -605,16 +671,22 @@ print_r($sql->errorInfo());
 if(isset($_POST['actualizar'])){
 ///////////// Informacion enviada por el formulario /////////////
 $idsub=trim($_POST['idsub']);
+$dnist=trim($_POST['dnist']);
 $nomsub=trim($_POST['nomsub']);
+$grado=trim($_POST['grado']);
+$grupo=trim($_POST['grupo']);
+$conducta=trim($_POST['conducta']);
 
-
-///////// Fin informacion enviada por el formulario /// 
 
 ////////////// Actualizar la tabla /////////
 $consulta = "UPDATE subgrade
-SET `nomsub`= :nomsub WHERE `idsub` = :idsub";
+SET `dnist`= :dnist, `nomsub` = :nomsub, `grado` = :grado, `grupo` = :grupo,  `conducta` = :conducta WHERE `idsub` = :idsub";
 $sql = $connect->prepare($consulta);
+$sql->bindParam(':dnist',$dnist,PDO::PARAM_STR, 25);
 $sql->bindParam(':nomsub',$nomsub,PDO::PARAM_STR, 25);
+$sql->bindParam(':grado',$grado,PDO::PARAM_STR,25);
+$sql->bindParam(':grupo',$grupo,PDO::PARAM_STR,25);
+$sql->bindParam(':conducta',$conducta,PDO::PARAM_STR,25);
 $sql->bindParam(':idsub',$idsub,PDO::PARAM_INT);
 
 $sql->execute();
@@ -636,34 +708,35 @@ print_r($sql->errorInfo());
 }// Cierra envio de guardado
 ?>
 
+<script>
+   function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
- <script type="text/javascript">
-            function showselect(str){
-                var xmlhttp; 
-                if (str=="")
-                  {
-                  document.getElementById("txtHint").innerHTML="";
-                  return;
-                  }
-                if (window.XMLHttpRequest)
-                  {// code for IE7+, Firefox, Chrome, Opera, Safari
-                  xmlhttp=new XMLHttpRequest();
-                  }
-                else
-                  {// code for IE6, IE5
-                  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-                  }
-                xmlhttp.onreadystatechange=function()
-                  {
-                  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-                     {
-                     document.getElementById("periodo").innerHTML=xmlhttp.responseText;
-                     }
-                  }
-                xmlhttp.open("GET","../funciones/grado.php?c="+str,true);
-                xmlhttp.send();
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
             }
-        </script>
+        }
+  </script>
+
+   <script type="text/javascript">
+      $("#btnEndStep1").click(function () {
+    $("#step1").addClass('hideMe');
+    $("#step2").removeClass('hideMe');
+});
+$("#btnEndStep2").click(function () {
+    $("#step2").addClass('hideMe');
+    $("#step3").removeClass('hideMe');
+});
+$("#btnEndStep3").click(function () {
+    // Whatever your final validation and form submission requires
+    $("#sampleModal").modal("hide");
+});
+  </script>
   </body>
   
   </html>

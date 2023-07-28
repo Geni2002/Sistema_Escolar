@@ -276,10 +276,9 @@ logout</span>Cerrar sesión</a>
           
          
           <th>Nombre</th>
-          <th>Correo</th>
-          <th>Teléfono</th>
           <th>Direccion</th>
-          <th>Estado</th>
+          <th>Teléfono</th>
+          <th>Correo</th>
           <th>Editar</th>
           <th>Eliminar</th>
         </tr>
@@ -290,20 +289,12 @@ logout</span>Cerrar sesión</a>
              
               
                <td><?php echo $producto->nomfa ?> </td>
-               <td><?php echo $producto->correo ?></td>
-               <td><?php echo $producto->telefa ?></td>
                <td><?php echo $producto->direc ?></td>
+               <td><?php echo $producto->telefa ?></td>
+               <td><?php echo $producto->correo ?></td>
                <td>
                        
 
-                        <?php if($producto->state==1)  { ?> 
-        <span class="badge badge-success">Activo</span>
-    <?php  }   else {?> 
-        <span class="badge badge-danger">No activo</span>
-        <?php  } ?>  
-                            
-                    </td>
-               <td>
 <form method='POST' action='<?php $_SERVER['PHP_SELF'] ?>'>
 <input type='hidden' name='idfa' value="<?php echo  $producto->idfa; ?>">
 <button name='editar' class='btn btn-warning text-white'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></button>
