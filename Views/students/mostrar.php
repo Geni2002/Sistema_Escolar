@@ -368,15 +368,10 @@ $obj = $stmt->fetchObject();
     <input value="<?php echo $obj->idstu;?>" name="idstu" type="hidden">
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="nombres">DNI</label>
-      <input value="<?php echo $obj->dnist;?>" maxlength="8"  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" name="dnist" type="text" class="form-control"  placeholder="DNI">
-    </div>
-    <div class="form-group col-md-6">
       <label for="edad">Nombre y apellidos</label>
       <input value="<?php echo $obj->nomstu;?>" name="nomstu" type="text" placeholder="Nombre y apellidos" class="form-control">
     </div>
-  </div>
-   
+  
   <div class="form-group col-md-6">
       <label for="nombres">Grado</label>
       <select required name="sexes" class="form-control">
@@ -387,7 +382,6 @@ $obj = $stmt->fetchObject();
     <option value="Tercer año">Tercer año</option>
     
     </select>
-    </div>
 
   </div>
    
@@ -395,7 +389,6 @@ $obj = $stmt->fetchObject();
       <label for="nombres">Grupo</label>
       <select required name="sexes" class="form-control">
     <option value="<?php echo $obj->grupo;?>"><?php echo $obj->grupo;?></option>        
-    <option value=""><< >></option>
     <option value="A">"A""</option>
     <option value="B">"B""</option>
     <option value="C">"C""</option>
@@ -406,13 +399,10 @@ $obj = $stmt->fetchObject();
     </select>
     </div>
 
-  </div>
-
     <div class="form-group col-md-6">
       <label for="nombres">Sexo</label>
       <select required name="sexes" class="form-control">
     <option value="<?php echo $obj->sexes;?>"><?php echo $obj->sexes;?></option>        
-    <option value=""><< >></option>
     <option value="Masculino">Masculino</option>
     <option value="Femenino">Femenino</option>
     
@@ -426,7 +416,7 @@ $obj = $stmt->fetchObject();
       <label for="nombres">Nacimiento</label>
       <input value="<?php echo $obj->fenac;?>" name="fenac" type="date" class="form-control">
     </div>
-
+    </div>
 
         <div class="form-group">
           <button name="actualizar" type="submit" class="btn btn-primary  btn-block">Actualizar Registro</button>
@@ -451,14 +441,6 @@ $obj = $stmt->fetchObject();
                 <div class="modal-body">
                 <div id="step1"> 
 
-                    <div class="form-row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <input type="text"  name="txtdnis" maxlength="8" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required class="form-control" placeholder="DNI" />
-                                    </div>
-                                </div>
-                            </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                  
@@ -589,7 +571,7 @@ $obj = $stmt->fetchObject();
   //$userjob = $_POST['user_job'];// user email
 
 
-    $dnist=$_POST['txtdnis'];
+   
     $nomstu=$_POST['txtnoms'];
     $grado=$_POST['txtcors'];
     $grupo=$_POST['txtedas'];
@@ -597,10 +579,7 @@ $obj = $stmt->fetchObject();
     $fenac=$_POST['txtfecs'];
   
   
-  if(empty($dnist)){
-   $errMSG = "Please enter your dni.";
-  }
-  else if(empty($nomstu)){
+  if(empty($nomstu)){
    $errMSG = "Please Enter your name.";
   }
   else if(empty($grado)){
@@ -624,8 +603,8 @@ $obj = $stmt->fetchObject();
   // if no error occured, continue ....
   if(!isset($errMSG))
   {
-   $stmt = $connect->prepare("INSERT INTO students(dnist, nomstu, grado, grupo, sexes,fenac, state) VALUES(:dnist, :nomstu,:grado,:grupo,:sexes,:fenac, '1')");
-   $stmt->bindParam(':dnist',$dnist);
+   $stmt = $connect->prepare("INSERT INTO students( nomstu, grado, grupo, sexes,fenac, state) VALUES( :nomstu,:grado,:grupo,:sexes,:fenac, '1')");
+  
    $stmt->bindParam(':nomstu',$nomstu);
    $stmt->bindParam(':grado',$grado);
    $stmt->bindParam(':grupo',$grupo);
@@ -694,7 +673,6 @@ print_r($sql->errorInfo());
 if(isset($_POST['actualizar'])){
 ///////////// Informacion enviada por el formulario /////////////
 $idstu=trim($_POST['idstu']);
-$dnist=trim($_POST['dnist']);
 $nomstu=trim($_POST['nomstu']);
 $grado=trim($_POST['grado']);
 $grupo=trim($_POST['grupo']);
@@ -706,9 +684,8 @@ $fenac=trim($_POST['fenac']);
 
 ////////////// Actualizar la tabla /////////
 $consulta = "UPDATE students
-SET `dnist`= :dnist, `nomstu` = :nomstu, `grado` = :grado, `grupo` = :grupo,  `sexes` = :sexes,`fenac` = :fenac WHERE `idstu` = :idstu";
+SET `nomstu` = :nomstu, `grado` = :grado, `grupo` = :grupo,  `sexes` = :sexes,`fenac` = :fenac WHERE `idstu` = :idstu";
 $sql = $connect->prepare($consulta);
-$sql->bindParam(':dnist',$dnist,PDO::PARAM_STR, 25);
 $sql->bindParam(':nomstu',$nomstu,PDO::PARAM_STR, 25);
 $sql->bindParam(':grado',$grado,PDO::PARAM_STR,25);
 $sql->bindParam(':grupo',$grupo,PDO::PARAM_STR,25);

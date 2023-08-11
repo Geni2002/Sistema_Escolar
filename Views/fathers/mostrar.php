@@ -352,42 +352,26 @@ $obj = $stmt->fetchObject();
     <input value="<?php echo $obj->idfa;?>" name="idfa" type="hidden">
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="nombres">DNI</label>
-      <input value="<?php echo $obj->dnifa;?>" maxlength="8"  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" name="dnifa" type="text" class="form-control"  placeholder="DNI">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="edad">Nombre y apellidos</label>
+    <label for="edad">Nombre y apellidos</label>
       <input value="<?php echo $obj->nomfa;?>" name="nomfa" type="text" placeholder="Nombre y apellidos" class="form-control">
     </div>
-  </div>
-
-
-  <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="nombres">Profesión</label>
-      <input value="<?php echo $obj->profefa;?>" name="profefa" type="text" class="form-control" placeholder="Profesión">
-    </div>
-
-     <div class="form-group col-md-6">
-      <label for="nombres">Correo</label>
+    <label for="nombres">Correo</label>
       <input value="<?php echo $obj->correo;?>" name="correo" type="email" class="form-control" placeholder="Correo">
     </div>
-  </div>
-
-
-    <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="nombres">Teléfono</label>
-      <input value="<?php echo $obj->telefa;?>" name="telefa" maxlength="15"  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" type="text" class="form-control" placeholder="Teléfono móvil">
-    </div>
+ 
 
      <div class="form-group col-md-6">
-      <label for="nombres">Dirección</label>
+     <label for="nombres">Teléfono</label>
+      <input value="<?php echo $obj->telefa;?>" name="telefa" maxlength="15"  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" type="text" class="form-control" placeholder="Teléfono móvil">
+    </div>
+  
+    <div class="form-group col-md-6">
+    <label for="nombres">Dirección</label>
       <input value="<?php echo $obj->direc;?>" name="direc" type="text" class="form-control" placeholder="Dirección">
     </div>
-  </div>
-
-
+    </div>
+   
         <div class="form-group">
           <button name="actualizar" type="submit" class="btn btn-primary  btn-block">Actualizar Registro</button>
         </div>
@@ -412,18 +396,18 @@ $obj = $stmt->fetchObject();
                         <div class="form-row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="modal_contact_firstname">DNI</label>
-                                    <div class="input-group">
-                                       
-                                        <input type="text"  name="txtdni" maxlength="8" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required class="form-control" placeholder="DNI" />
+                                <label for="modal_contact_lastname">Nombre y apellidos</label>
+                                    <div class="input-group">       
+                                        <input type="text"  name="txtnom" placeholder="Nombre y apellidos" required class="form-control"/>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="modal_contact_lastname">Nombre y apellidos</label>
-                                    <div class="input-group">       
-                                        <input type="text"  name="txtnom" placeholder="Nombre y apellidos" required class="form-control"/>
+                                <label for="modal_contact_firstname">Correo</label>
+                                    <div class="input-group">
+                                        <input type="email"  name="txtcor" required class="form-control" placeholder="Correo" />
+                                   
                                     </div>
                                 </div>
                             </div>
@@ -433,43 +417,25 @@ $obj = $stmt->fetchObject();
                         <div class="form-row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="modal_contact_firstname">Profesión</label>
-                                    <div class="input-group">
-                                       
-                                        <input type="text"  name="txtpro" required class="form-control" placeholder="Profesión" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="modal_contact_firstname">Correo</label>
-                                    <div class="input-group">
-                                        <input type="email"  name="txtcor" required class="form-control" placeholder="Correo" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                         
-                         <div class="form-row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="modal_contact_firstname">Teléfono</label>
+                                <label for="modal_contact_firstname">Teléfono</label>
                                     <div class="input-group">
                                         <input type="text" name="txttel" maxlength="15" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="Teléfono" required class="form-control"/>
+                                    
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="modal_contact_firstname">Dirección</label>
+                                <label for="modal_contact_firstname">Dirección</label>
                                     <div class="input-group">
                                         <input type="text" name="txtdir" placeholder="Dirección" required class="form-control"/>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                         
+                        
 
                       
                         
@@ -523,7 +489,7 @@ $obj = $stmt->fetchObject();
   //$userjob = $_POST['user_job'];// user email
 
 
-    $dnifa=$_POST['txtdni'];
+   
     $nomfa=$_POST['txtnom'];
     $profefa=$_POST['txtpro'];
     $correo=$_POST['txtcor'];
@@ -534,10 +500,7 @@ $obj = $stmt->fetchObject();
     
 
   
-  if(empty($dnifa)){
-   $errMSG = "Please enter your dni.";
-  }
-  else if(empty($nomfa)){
+ if(empty($nomfa)){
    $errMSG = "Please Enter your name.";
   }
   else if(empty($profefa)){
@@ -559,8 +522,7 @@ $obj = $stmt->fetchObject();
   // if no error occured, continue ....
   if(!isset($errMSG))
   {
-   $stmt = $connect->prepare("INSERT INTO fathers(dnifa, nomfa, profefa, correo, telefa,direc,state) VALUES(:dnifa, :nomfa,:profefa,:correo,:telefa,:direc, '1')");
-   $stmt->bindParam(':dnifa',$dnifa);
+   $stmt = $connect->prepare("INSERT INTO fathers( nomfa, profefa, correo, telefa,direc,state) VALUES(:nomfa,:profefa,:correo,:telefa,:direc, '1')");
    $stmt->bindParam(':nomfa',$nomfa);
    $stmt->bindParam(':profefa',$profefa);
    $stmt->bindParam(':correo',$correo);
@@ -630,7 +592,6 @@ print_r($sql->errorInfo());
 if(isset($_POST['actualizar'])){
 ///////////// Informacion enviada por el formulario /////////////
 $idfa=trim($_POST['idfa']);
-$dnifa=trim($_POST['dnifa']);
 $nomfa=trim($_POST['nomfa']);
 $profefa=trim($_POST['profefa']);
 $correo=trim($_POST['correo']);
@@ -640,9 +601,8 @@ $direc=trim($_POST['direc']);
 
 ////////////// Actualizar la tabla /////////
 $consulta = "UPDATE fathers
-SET `dnifa`= :dnifa, `nomfa` = :nomfa, `profefa` = :profefa, `correo` = :correo, `telefa` = :telefa, `direc` = :direc,  WHERE `idfa` = :idfa";
+SET  `nomfa` = :nomfa, `profefa` = :profefa, `correo` = :correo, `telefa` = :telefa, `direc` = :direc,  WHERE `idfa` = :idfa";
 $sql = $connect->prepare($consulta);
-$sql->bindParam(':dnifa',$dnifa,PDO::PARAM_STR, 25);
 $sql->bindParam(':nomfa',$nomfa,PDO::PARAM_STR, 25);
 $sql->bindParam(':profefa',$profefa,PDO::PARAM_STR,25);
 $sql->bindParam(':correo',$correo,PDO::PARAM_STR,25);
