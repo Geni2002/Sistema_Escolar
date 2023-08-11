@@ -364,10 +364,6 @@ $obj = $stmt->fetchObject();
     <input value="<?php echo $obj->idtea;?>" name="idtea" type="hidden">
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="nombres">DNI</label>
-      <input value="<?php echo $obj->dnite;?>" maxlength="8"  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" name="dnite" type="text" class="form-control"  placeholder="DNI">
-    </div>
-    <div class="form-group col-md-6">
       <label for="edad">Nombre y apellidos</label>
       <input value="<?php echo $obj->nomte;?>" name="nomte" type="text" placeholder="Nombre y apellidos" class="form-control">
     </div>
@@ -433,7 +429,7 @@ $obj = $stmt->fetchObject();
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input type="text"  name="txtdni" maxlength="8" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required class="form-control" placeholder="DNI" />
+                                    <input type="text"  name="txtnom" placeholder="Nombre y apellidos" required class="form-control"/>
                                     </div>
                                 </div>
                             </div>
@@ -441,7 +437,12 @@ $obj = $stmt->fetchObject();
                                 <div class="form-group">
                                  
                                     <div class="input-group">       
-                                        <input type="text"  name="txtnom" placeholder="Nombre y apellidos" required class="form-control"/>
+                                    <select class="form-control" required name="txtcorr">
+                                          <option selected>Grado</option>
+                                          <option value="Primer año">Primer año</option>
+                                          <option value="Segundo año">Segundo año</option>
+                                          <option value="Tercer año">Tercer año</option>
+                                          </select>
                                     </div>
                                 </div>
                             </div>
@@ -453,20 +454,7 @@ $obj = $stmt->fetchObject();
                                 <div class="form-group">
                                     
                                     <div class="input-group">
-                                    <select class="form-control" required name="txtcorr">
-                                          <option selected>Grado</option>
-                                          <option value="Primer año">Primer año</option>
-                                          <option value="Segundo año">Segundo año</option>
-                                          <option value="Tercer año">Tercer año</option>
-                                          </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    
-                                    <div class="input-group">
-                                        <select class="form-control" required name="txtsex">
+                                    <select class="form-control" required name="txtsex">
                                           <option selected>Grupo</option>
                                           <option value="A">"A""</option>
                                           <option value="B">"B""</option>
@@ -478,22 +466,21 @@ $obj = $stmt->fetchObject();
                                     </div>
                                 </div>
                             </div>
-                    </div>
-                     
-                    <div class="form-row">
-                    <div class="col-sm-6">
+                            <div class="col-sm-6">
                                 <div class="form-group">
-                                 
+                                    
+                                    <div class="input-group">
                                     <div class="input-group">       
                                         <input type="text"  name="txtperm" placeholder="Condicion" required class="form-control"/>
                                     </div>
                                 </div>
                             </div>
                     </div>
-            
+                     
+                    
                            
                     
-
+                    </div>
 
                    <button name='agregar'>GUARDAR</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>

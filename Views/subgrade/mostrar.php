@@ -354,16 +354,11 @@ $obj = $stmt->fetchObject();
     <input value="<?php echo $obj->idsub;?>" name="idsub" type="hidden">
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="nombres">DNI</label>
-      <input value="<?php echo $obj->dnist;?>" maxlength="8"  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" name="dnist" type="text" class="form-control"  placeholder="DNI">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="edad">Nombre y apellidos</label>
+    <label for="edad">Nombre y apellidos</label>
       <input value="<?php echo $obj->nomsub;?>" name="nomsub" type="text" placeholder="Nombre y apellidos" class="form-control">
     </div>
-   
-  <div class="form-group col-md-6">
-      <label for="nombres">Grado</label>
+    <div class="form-group col-md-6">
+    <label for="nombres">Grado</label>
       <select required name="sexes" class="form-control">
     <option value="<?php echo $obj->grado;?>"><?php echo $obj->grado;?></option>        
     <option value="Primer año">Primer año</option>
@@ -372,10 +367,9 @@ $obj = $stmt->fetchObject();
     
     </select>
     </div>
-
    
   <div class="form-group col-md-6">
-      <label for="nombres">Grupo</label>
+  <label for="nombres">Grupo</label>
       <select required name="sexes" class="form-control">
     <option value="<?php echo $obj->grupo;?>"><?php echo $obj->grupo;?></option>        
     <option value="A">"A""</option>
@@ -388,14 +382,15 @@ $obj = $stmt->fetchObject();
     </select>
     </div>
 
-  </div>
- 
-  </div>
-    <div class="form-group col-md-6">
-      <label for="edad">Conducta</label>
+   
+  <div class="form-group col-md-6">
+  <label for="edad">Conducta</label>
       <input value="<?php echo $obj->conducta;?>" name="conducta" type="text" placeholder="Conducta" class="form-control">
     </div>
-    </div>
+
+  </div>
+ 
+  
 
 
         <div class="form-group">
@@ -424,8 +419,8 @@ $obj = $stmt->fetchObject();
                     <div class="form-row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <div class="input-group">
-                                        <input type="text"  name="txtdnis" maxlength="8" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required class="form-control" placeholder="DNI" />
+                                <div class="input-group">       
+                                        <input type="text"  name="txtnoms" placeholder="Nombre y apellidos" required class="form-control"/>
                                     </div>
                                 </div>
                             </div>
@@ -433,18 +428,6 @@ $obj = $stmt->fetchObject();
                                 <div class="form-group">
                                  
                                     <div class="input-group">       
-                                        <input type="text"  name="txtnoms" placeholder="Nombre y apellidos" required class="form-control"/>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-
-                    <div class="form-row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    
-                                    <div class="input-group">
-
                                     <select class="form-control" required name="txtcors">
                                           <option selected>Grado</option>
                                           <option value="Primer año">Primer año</option>
@@ -453,10 +436,12 @@ $obj = $stmt->fetchObject();
                                        
     
                                           </select>
-                                           
                                     </div>
                                 </div>
                             </div>
+                    </div>
+
+                    <div class="form-row">
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     
@@ -471,33 +456,31 @@ $obj = $stmt->fetchObject();
                                           <option value="E">"E""</option>
                                           <option value="F">"F""</option>
                                           </select>
+                                           
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    
+                                    <div class="input-group">
+
+                                    <div class="input-group">       
+                                        <input type="text"  name="txtsexs" placeholder="Conducta" required class="form-control"/>
                                     </div>
                                 </div>
                             </div>
                     </div>
 
 
-                    <div class="form-row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    
-                                    <div class="input-group">
-                                    
-                                    <div class="input-group">       
-                                        <input type="text"  name="txtsexs" placeholder="Conducta" required class="form-control"/>
-                                          
+                    
                                         
     
-                                        </div>
-                                               </div>
-                                    </div>
-                                </div>
-                            </div>
 
                            
                             
                          
-                   
+                    </div>
 
                    <button name='agregar'>GUARDAR</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>
