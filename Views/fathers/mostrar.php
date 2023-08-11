@@ -160,25 +160,7 @@
                         <ul class="nav navbar-nav flex-row ml-auto">   
                             <li class="dropdown nav-item active">
                                 <a href="#" class="nav-link" data-toggle="dropdown">
-                                   <span class="material-icons">notifications</span>
-								   <span class="notification">4</span>
-                               </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="#">You have 5 new messages</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">You're now friend with Mike</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wish Mary on her birthday!</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">5 warnings in Server Console</a>
-                                    </li>
                                   
-                                </ul>
-                            </li>
                             
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="#" data-toggle="dropdown">
@@ -396,7 +378,7 @@ $obj = $stmt->fetchObject();
     <div class="form-row">
     <div class="form-group col-md-6">
       <label for="nombres">Teléfono</label>
-      <input value="<?php echo $obj->telefa;?>" name="telefa" maxlength="9"  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" type="text" class="form-control" placeholder="Teléfono móvil">
+      <input value="<?php echo $obj->telefa;?>" name="telefa" maxlength="15"  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" type="text" class="form-control" placeholder="Teléfono móvil">
     </div>
 
      <div class="form-group col-md-6">
@@ -474,7 +456,7 @@ $obj = $stmt->fetchObject();
                                 <div class="form-group">
                                     <label for="modal_contact_firstname">Teléfono</label>
                                     <div class="input-group">
-                                        <input type="text" name="txttel" maxlength="9" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="Teléfono" required class="form-control"/>
+                                        <input type="text" name="txttel" maxlength="15" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="Teléfono" required class="form-control"/>
                                     </div>
                                 </div>
                             </div>
@@ -490,11 +472,6 @@ $obj = $stmt->fetchObject();
                         </div>
 
                       
-
-                       
-
-                           
-
                         
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>
@@ -660,8 +637,6 @@ $correo=trim($_POST['correo']);
 $telefa=trim($_POST['telefa']);
 $direc=trim($_POST['direc']);
 
-
-///////// Fin informacion enviada por el formulario /// 
 
 ////////////// Actualizar la tabla /////////
 $consulta = "UPDATE fathers

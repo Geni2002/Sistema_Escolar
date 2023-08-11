@@ -16,7 +16,7 @@ $this->SetX(145);
 $this->SetFont('Arial','B',12);
 
 $this->SetTextColor(246, 130, 14 );
-$this->Cell(50, 8, 'I.E.P Ricardo Palma',0,1);
+$this->Cell(50, 8, ' Secundaria Tecnica # 10 ');
 $this->SetY(45);
 $this->SetX(147);
 $this->SetFont('Arial','',8);
@@ -34,7 +34,7 @@ function Footer()
         $this->Cell(95,5,utf8_decode('Página ').$this->PageNo().' / {nb}',0,0,'L');
         $this->Cell(95,5,date('d/m/Y | g:i:a') ,00,1,'R');
         $this->Line(10,287,200,287);
-        $this->Cell(0,5,utf8_decode("I.E.P Ricardo Palma © Todos los derechos reservados."),0,0,"C");
+        $this->Cell(0,5,utf8_decode("."),0,0,"C");
         
 }
 }

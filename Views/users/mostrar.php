@@ -160,25 +160,7 @@
                         <ul class="nav navbar-nav flex-row ml-auto">   
                             <li class="dropdown nav-item active">
                                 <a href="#" class="nav-link" data-toggle="dropdown">
-                                   <span class="material-icons">notifications</span>
-								   <span class="notification">4</span>
-                               </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="#">You have 5 new messages</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">You're now friend with Mike</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wish Mary on her birthday!</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">5 warnings in Server Console</a>
-                                    </li>
-                                  
-                                </ul>
-                            </li>
+                                   
                             
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="#" data-toggle="dropdown">
@@ -405,6 +387,11 @@ $obj = $stmt->fetchObject();
                                         <select class="form-control" required name="txtperm">
                                           <option selected>SELECCIONE</option>
                                           <option value="1">Administrador</option>
+                                          <option value="2">Subdirector</option>
+                                          <option value="3">Secretaria</option>
+                                          <option value="4">Trabajo Social</option>
+                                          <option value="5">Perfecto</option>
+                                          <option value="6">Maestr@</option>
                                          
                                         </select>
                                     </div>

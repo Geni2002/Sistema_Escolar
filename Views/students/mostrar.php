@@ -165,25 +165,7 @@
                         <ul class="nav navbar-nav flex-row ml-auto">   
                             <li class="dropdown nav-item active">
                                 <a href="#" class="nav-link" data-toggle="dropdown">
-                                   <span class="material-icons">notifications</span>
-								   <span class="notification">4</span>
-                               </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="#">You have 5 new messages</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">You're now friend with Mike</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wish Mary on her birthday!</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">5 warnings in Server Console</a>
-                                    </li>
                                   
-                                </ul>
-                            </li>
                             
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="#" data-toggle="dropdown">
@@ -296,8 +278,8 @@ logout</span>Cerrar sesión</a>
                
               
                <td><?php echo $producto->nomstu ?></td>
-               <td><?php echo $producto->sexes ?></td>
                <td><?php echo $producto->fenac ?></td>
+               <td><?php echo $producto->sexes ?></td>
                <td><?php echo $producto->grado ?></td>
                <td><?php echo $producto->grupo ?></td>
                <td>
@@ -553,8 +535,6 @@ $obj = $stmt->fetchObject();
                             </div>
                             </div>
                             
-                         
-                   
 
                    <button name='agregar'>GUARDAR</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>

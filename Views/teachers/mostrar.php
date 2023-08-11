@@ -167,25 +167,7 @@
                         <ul class="nav navbar-nav flex-row ml-auto">   
                             <li class="dropdown nav-item active">
                                 <a href="#" class="nav-link" data-toggle="dropdown">
-                                   <span class="material-icons">notifications</span>
-								   <span class="notification">4</span>
-                               </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="#">You have 5 new messages</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">You're now friend with Mike</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wish Mary on her birthday!</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">5 warnings in Server Console</a>
-                                    </li>
-                                  
-                                </ul>
-                            </li>
+                                   
                             
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="#" data-toggle="dropdown">
@@ -328,7 +310,7 @@ logout</span>Cerrar sesión</a>
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
 
-                    <p>Mostrando <?php echo $productosPorPagina ?> de <?php echo $conteo ?> profesores disponibles</p>
+                    <p>Mostrando <?php echo $productosPorPagina ?> de <?php echo $conteo ?> condiciones disponibles</p>
                 </div>
                 <div class="col-xs-12 col-sm-6">
                     <p>Página <?php echo $pagina ?> de <?php echo $paginas ?> </p>

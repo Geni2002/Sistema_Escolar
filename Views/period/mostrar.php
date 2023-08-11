@@ -161,25 +161,7 @@
                         <ul class="nav navbar-nav flex-row ml-auto">   
                             <li class="dropdown nav-item active">
                                 <a href="#" class="nav-link" data-toggle="dropdown">
-                                   <span class="material-icons">notifications</span>
-								   <span class="notification">4</span>
-                               </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="#">You have 5 new messages</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">You're now friend with Mike</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wish Mary on her birthday!</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">5 warnings in Server Console</a>
-                                    </li>
                                   
-                                </ul>
-                            </li>
                             
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="#" data-toggle="dropdown">
@@ -280,7 +262,6 @@ logout</span>Cerrar sesión</a>
           <th>Nombre</th>
           <th>Fecha inicio</th>
           <th>Fecha fin</th>
-          <th>Estado</th>
           <th>Editar</th>
           <th>Eliminar</th>
         </tr>
@@ -297,14 +278,7 @@ logout</span>Cerrar sesión</a>
                <td>
                        
 
-                        <?php if($producto->state=='Activo')  { ?> 
-        <span class="badge badge-success">Activo</span>
-    <?php  }   else {?> 
-        <span class="badge badge-danger">No activo</span>
-        <?php  } ?>  
-                            
-                    </td>
-               <td>
+          
 <form method='POST' action='<?php $_SERVER['PHP_SELF'] ?>'>
 <input type='hidden' name='idper' value="<?php echo  $producto->idper; ?>">
 <button name='editar' class='btn btn-warning text-white'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></button>
@@ -436,10 +410,11 @@ $obj = $stmt->fetchObject();
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="modal_contact_lastname">Termina</label>
+                                <label for="modal_contact_firstname">Nombre</label>
                                     <div class="input-group">
-                                         
-                                        <input type="date"  name="txttermi" required class="form-control"/>
+                                       
+                                        <input type="text"  name="txtnom" required class="form-control" placeholder="Nombre" />
+                                    
                                     </div>
                                 </div>
                             </div>
@@ -449,39 +424,28 @@ $obj = $stmt->fetchObject();
                         <div class="form-row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="modal_contact_firstname">Nombre</label>
+                                <label for="modal_contact_firstname">Inicia</label>
                                     <div class="input-group">
                                        
-                                        <input type="text"  name="txtnom" required class="form-control" placeholder="Nombre" />
+                                        <input type="date" name="txtini" required class="form-control"/>
+                                
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="modal_contact_lastname">Estado</label>
+                                <label for="modal_contact_lastname">Termina</label>
                                     <div class="input-group">
-                                        <select class="form-control" required name="txtesta">
-                                          <option selected>SELECCIONE</option>
-                                          <option value="Activo">Activo</option>
                                          
-                                        </select>
+                                        <input type="date"  name="txttermi" required class="form-control"/>
+                                         
+                                       
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                         <div class="form-row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="modal_contact_firstname">Inicia</label>
-                                    <div class="input-group">
-                                       
-                                        <input type="date" name="txtini" required class="form-control"/>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
+                       
                     
                     </div>
                     <div class="modal-footer">

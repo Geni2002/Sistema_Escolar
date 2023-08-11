@@ -15,12 +15,12 @@ $this->SetY(40);
 $this->SetX(245);
 $this->SetFont('Arial','B',12);
 $this->SetTextColor(246, 130, 14);
-$this->Cell(150, 8, 'I.E.P Ricardo Palma',0,1);
+$this->Cell(150, 8, 'Secundaria Tecnica # 10',0,1);
 
 $this->SetY(45);
 $this->SetX(247);
 $this->SetFont('Arial','',8);
-$this->Cell(40, 8, utf8_decode('Listado de profesores'));
+$this->Cell(40, 8, utf8_decode('Listado de condiciones'));
 $this->SetTextColor(30,10,32);
 
 $this->Ln(30);

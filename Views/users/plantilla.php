@@ -16,7 +16,7 @@ $this->SetX(145);
 $this->SetFont('Arial','B',12);
 
 $this->SetTextColor(246, 130, 14 );
-$this->Cell(50, 8, 'Escuela Secundaria Tecnica Núm. 10',0,1);
+$this->Cell(50, 8, 'Secundaria Tecnica # 10',0,1);
 $this->SetY(45);
 $this->SetX(147);
 $this->SetFont('Arial','',8);
