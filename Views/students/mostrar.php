@@ -587,13 +587,13 @@ $obj = $stmt->fetchObject();
    $errMSG = "Please Enter your birth.";
   }
 
-  }
+  
   
   
   // if no error occured, continue ....
   if(!isset($errMSG))
   {
-   $stmt = $connect->prepare("INSERT INTO students ( nomstu, grado, grupo, sexes,fenac ) VALUES( :nomstu,:grado,:grupo,:sexes,:fenac )");
+   $stmt = $connect->prepare("INSERT INTO students ( nomstu, grado, grupo, sexes,fenac ) VALUES ( :nomstu,:grado,:grupo,:sexes,:fenac )");
   
    $stmt->bindParam(':nomstu',$nomstu);
    $stmt->bindParam(':grado',$grado);
@@ -615,7 +615,7 @@ swal("¡Registrado!", "Agregado correctamente", "success").then(function() {
    }
 
   }
- 
+ }
 ?>
 
 
