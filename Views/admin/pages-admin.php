@@ -237,7 +237,7 @@ logout</span>Cerrar sesión</a>
 
          ?>
         <span class="count-numbers"><?php echo  $total; ?></span>
-        <span class="count-name">Docentes</span>
+        <span class="count-name">Condiciones Alumnos</span>
       </div>
     </div>
 
@@ -293,7 +293,7 @@ logout</span>Cerrar sesión</a>
 
         
         <?php  
-        $sentencia = $connect->query("SELECT * FROM students ORDER BY dnist ASC LIMIT 3;");
+        $sentencia = $connect->query("SELECT * FROM students ORDER BY idstu ASC LIMIT 3;");
         $personas = $sentencia->fetchAll(PDO::FETCH_OBJ);
 
         ?>

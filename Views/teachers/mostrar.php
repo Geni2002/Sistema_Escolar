@@ -13,7 +13,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-        <title>Docentes | Sistema Escolar</title>
+        <title>Condicion Alumno | Sistema Escolar</title>
 	    <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../../Assets/css/bootstrap-1.min.css">
 	    <!----css3---->
@@ -186,7 +186,7 @@ person_outline
                                     <li>
                                         <a href="#"><span class="material-icons">
 settings
-</span>Configuración</a>
+</span></a>
                                     </li>
                                     <li>
                                         <a href="../pages-logout.php"><span class="material-icons">
@@ -228,7 +228,7 @@ logout</span>Cerrar sesión</a>
     <div class="table-title">
       <div class="row">
         <div class="col-sm-6 p-0 d-flex justify-content-lg-start justify-content-center">
-          <h2 class="ml-lg-2">Docentes</h2>
+          <h2 class="ml-lg-2">Condicion</h2>
         </div>
 
         <div class="col-sm-12 p-0 d-flex justify-content-lg-end justify-content-center">
@@ -385,12 +385,12 @@ $obj = $stmt->fetchObject();
       <label for="nombres">Grupo</label>
       <select required name="sexes" class="form-control">
     <option value="<?php echo $obj->grupo;?>"><?php echo $obj->grupo;?></option>        
-    <option value="A">"A""</option>
-    <option value="B">"B""</option>
-    <option value="C">"C""</option>
-    <option value="D">"D""</option>
-    <option value="E">"E""</option>
-    <option value="F">"F""</option>
+    <option value="A">"A"</option>
+    <option value="B">"B"</option>
+    <option value="C">"C"</option>
+    <option value="D">"D"</option>
+    <option value="E">"E"</option>
+    <option value="F">"F"</option>
     </select>
     </div>
 
@@ -456,12 +456,12 @@ $obj = $stmt->fetchObject();
                                     <div class="input-group">
                                     <select class="form-control" required name="txtsex">
                                           <option selected>Grupo</option>
-                                          <option value="A">"A""</option>
-                                          <option value="B">"B""</option>
-                                          <option value="C">"C""</option>
-                                          <option value="D">"D""</option>
-                                          <option value="E">"E""</option>
-                                          <option value="F">"F""</option>
+                                          <option value="A">"A"</option>
+                                          <option value="B">"B"</option>
+                                          <option value="C">"C"</option>
+                                          <option value="D">"D"</option>
+                                          <option value="E">"E"</option>
+                                          <option value="F">"F"</option>
                                            </select>
                                     </div>
                                 </div>
@@ -477,8 +477,7 @@ $obj = $stmt->fetchObject();
                             </div>
                     </div>
                      
-                    
-                           
+        
                     
                     </div>
 
@@ -536,16 +535,12 @@ $obj = $stmt->fetchObject();
   //$userjob = $_POST['user_job'];// user email
 
 
-    $dnite=$_POST['txtdni'];
     $nomte=$_POST['txtnom'];
     $grado=$_POST['txtcorr'];
     $grupo=$_POST['txtsex'];
     $condicion=$_POST['txtperm'];
 
-  if(empty($dnite)){
-   $errMSG = "Please enter your dni.";
-  }
-  else if(empty($nomte)){
+ if(empty($nomte)){
    $errMSG = "Please Enter your name.";
   }
   else if(empty($grado)){
@@ -563,8 +558,8 @@ $obj = $stmt->fetchObject();
   // if no error occured, continue ....
   if(!isset($errMSG))
   {
-   $stmt = $connect->prepare("INSERT INTO teachers(dnite, nomte, grado, grupo, condicion ) VALUES(:dnite, :nomte,:grado,:grupo,:condicion)");
-   $stmt->bindParam(':dnite',$dnite);
+   $stmt = $connect->prepare("INSERT INTO teachers( nomte, grado, grupo, condicion ) VALUES(:nomte,:grado,:grupo,:condicion)");
+   
    $stmt->bindParam(':nomte',$nomte);
    $stmt->bindParam(':grado',$grado);
    $stmt->bindParam(':grupo',$grupo);
@@ -601,7 +596,7 @@ $(document).ready(function() {
 
 <?php  
 if(isset($_POST['eliminar'])){
-////////////// Actualizar la tabla /////////
+
 $consulta = "DELETE FROM `teachers` WHERE `idtea`=:idtea";
 $sql = $connect-> prepare($consulta);
 $sql -> bindParam(':idtea', $idtea, PDO::PARAM_INT);
@@ -632,19 +627,15 @@ print_r($sql->errorInfo());
 if(isset($_POST['actualizar'])){
 ///////////// Informacion enviada por el formulario /////////////
 $idtea=trim($_POST['idtea']);
-$dnite=trim($_POST['dnite']);
 $nomte=trim($_POST['nomte']);
 $grado=trim($_POST['grado']);
 $grupo=trim($_POST['grupo']);
 $condicion=trim($_POST['condicion']);
 
-///////// Fin informacion enviada por el formulario /// 
 
-////////////// Actualizar la tabla /////////
 $consulta = "UPDATE teachers
-SET `dnite`= :dnite, `nomte` = :nomte, `grado` = :grado, `grupo` = :grupo, `condicion` = :condicion  WHERE `idtea` = :idtea";
+SET  `nomte` = :nomte, `grado` = :grado, `grupo` = :grupo, `condicion` = :condicion  WHERE `idtea` = :idtea";
 $sql = $connect->prepare($consulta);
-$sql->bindParam(':dnite',$dnite,PDO::PARAM_STR, 25);
 $sql->bindParam(':nomte',$nomte,PDO::PARAM_STR, 25);
 $sql->bindParam(':grado',$grado,PDO::PARAM_STR,25);
 $sql->bindParam(':grupo',$grupo,PDO::PARAM_STR,25);

@@ -287,7 +287,7 @@ logout</span>Cerrar sesión</a>
                </td>
                <td>
 <form  onsubmit="return confirm('Realmente desea eliminar el registro?');" method='POST' action='<?php $_SERVER['PHP_SELF'] ?>'>
-<input type='hidden' name='idsub' value="<?php echo  $producto->idstu; ?>">
+<input type='hidden' name='idsub' value="<?php echo  $producto->idsub; ?>">
 <button name='eliminar' class='btn btn-danger text-white' ><i class='material-icons'  title='Delete'>&#xE872;</i></button>
 </form>
                </td>
@@ -372,12 +372,12 @@ $obj = $stmt->fetchObject();
   <label for="nombres">Grupo</label>
       <select required name="sexes" class="form-control">
     <option value="<?php echo $obj->grupo;?>"><?php echo $obj->grupo;?></option>        
-    <option value="A">"A""</option>
-    <option value="B">"B""</option>
-    <option value="C">"C""</option>
-    <option value="D">"D""</option>
-    <option value="E">"E""</option>
-    <option value="F">"F""</option>
+    <option value="A">"A"</option>
+    <option value="B">"B"</option>
+    <option value="C">"C"</option>
+    <option value="D">"D"</option>
+    <option value="E">"E"</option>
+    <option value="F">"F"</option>
     
     </select>
     </div>
@@ -449,12 +449,12 @@ $obj = $stmt->fetchObject();
 
                                     <select class="form-control" required name="txtedas">
                                           <option selected>Grupo</option>
-                                          <option value="A">"A""</option>
-                                          <option value="B">"B""</option>
-                                          <option value="C">"C""</option>
-                                          <option value="D">"D""</option>
-                                          <option value="E">"E""</option>
-                                          <option value="F">"F""</option>
+                                          <option value="A">"A"</option>
+                                          <option value="B">"B"</option>
+                                          <option value="C">"C"</option>
+                                          <option value="D">"D"</option>
+                                          <option value="E">"E"</option>
+                                          <option value="F">"F"</option>
                                           </select>
                                            
                                     </div>
@@ -473,12 +473,7 @@ $obj = $stmt->fetchObject();
                     </div>
 
 
-                    
-                                        
-    
-
-                           
-                            
+                             
                          
                     </div>
 
@@ -535,7 +530,7 @@ $obj = $stmt->fetchObject();
   //$userjob = $_POST['user_job'];// user email
 
 
-    $dnist=$_POST['txtdnis'];
+    
     $nomsub=$_POST['txtnoms'];
     $grado=$_POST['txtcors'];
     $grupo=$_POST['txtedas'];
@@ -543,10 +538,7 @@ $obj = $stmt->fetchObject();
     
   
   
-  if(empty($dnist)){
-   $errMSG = "Please enter your dni.";
-  }
-  else if(empty($nomsub)){
+ if(empty($nomsub)){
    $errMSG = "Please Enter your name.";
   }
   else if(empty($grado)){
@@ -567,8 +559,8 @@ $obj = $stmt->fetchObject();
   // if no error occured, continue ....
   if(!isset($errMSG))
   {
-   $stmt = $connect->prepare("INSERT INTO subgrade(dnist, nomsub, grado, grupo, conducta, state) VALUES(:dnist, :nomsub,:grado,:grupo,:conducta '1')");
-   $stmt->bindParam(':dnist',$dnist);
+   $stmt = $connect->prepare("INSERT INTO subgrade ( nomsub, grado, grupo, conducta ) VALUES( :nomsub,:grado,:grupo,:conducta )");
+   
    $stmt->bindParam(':nomsub',$nomsub);
    $stmt->bindParam(':grado',$grado);
    $stmt->bindParam(':grupo',$grupo);
@@ -636,7 +628,6 @@ print_r($sql->errorInfo());
 if(isset($_POST['actualizar'])){
 ///////////// Informacion enviada por el formulario /////////////
 $idsub=trim($_POST['idsub']);
-$dnist=trim($_POST['dnist']);
 $nomsub=trim($_POST['nomsub']);
 $grado=trim($_POST['grado']);
 $grupo=trim($_POST['grupo']);
@@ -645,9 +636,8 @@ $conducta=trim($_POST['conducta']);
 
 ////////////// Actualizar la tabla /////////
 $consulta = "UPDATE subgrade
-SET `dnist`= :dnist, `nomsub` = :nomsub, `grado` = :grado, `grupo` = :grupo,  `conducta` = :conducta WHERE `idsub` = :idsub";
+SET  `nomsub` = :nomsub, `grado` = :grado, `grupo` = :grupo,  `conducta` = :conducta WHERE `idsub` = :idsub";
 $sql = $connect->prepare($consulta);
-$sql->bindParam(':dnist',$dnist,PDO::PARAM_STR, 25);
 $sql->bindParam(':nomsub',$nomsub,PDO::PARAM_STR, 25);
 $sql->bindParam(':grado',$grado,PDO::PARAM_STR,25);
 $sql->bindParam(':grupo',$grupo,PDO::PARAM_STR,25);

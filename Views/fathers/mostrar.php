@@ -491,7 +491,6 @@ $obj = $stmt->fetchObject();
 
    
     $nomfa=$_POST['txtnom'];
-    $profefa=$_POST['txtpro'];
     $correo=$_POST['txtcor'];
     $telefa=$_POST['txttel'];
     $direc=$_POST['txtdir'];
@@ -502,9 +501,6 @@ $obj = $stmt->fetchObject();
   
  if(empty($nomfa)){
    $errMSG = "Please Enter your name.";
-  }
-  else if(empty($profefa)){
-   $errMSG = "Please Enter your profession.";
   }
   else if(empty($correo)){
    $errMSG = "Please Enter your email.";
@@ -522,9 +518,8 @@ $obj = $stmt->fetchObject();
   // if no error occured, continue ....
   if(!isset($errMSG))
   {
-   $stmt = $connect->prepare("INSERT INTO fathers( nomfa, profefa, correo, telefa,direc,state) VALUES(:nomfa,:profefa,:correo,:telefa,:direc, '1')");
+   $stmt = $connect->prepare("INSERT INTO fathers( nomfa, correo, telefa,direc,state) VALUES(:nomfa,:correo,:telefa,:direc, '1')");
    $stmt->bindParam(':nomfa',$nomfa);
-   $stmt->bindParam(':profefa',$profefa);
    $stmt->bindParam(':correo',$correo);
    $stmt->bindParam(':telefa',$telefa);
    $stmt->bindParam(':direc',$direc);
@@ -593,7 +588,6 @@ if(isset($_POST['actualizar'])){
 ///////////// Informacion enviada por el formulario /////////////
 $idfa=trim($_POST['idfa']);
 $nomfa=trim($_POST['nomfa']);
-$profefa=trim($_POST['profefa']);
 $correo=trim($_POST['correo']);
 $telefa=trim($_POST['telefa']);
 $direc=trim($_POST['direc']);
@@ -601,10 +595,9 @@ $direc=trim($_POST['direc']);
 
 ////////////// Actualizar la tabla /////////
 $consulta = "UPDATE fathers
-SET  `nomfa` = :nomfa, `profefa` = :profefa, `correo` = :correo, `telefa` = :telefa, `direc` = :direc,  WHERE `idfa` = :idfa";
+SET  `nomfa` = :nomfa,  `correo` = :correo, `telefa` = :telefa, `direc` = :direc WHERE `idfa` = :idfa";
 $sql = $connect->prepare($consulta);
 $sql->bindParam(':nomfa',$nomfa,PDO::PARAM_STR, 25);
-$sql->bindParam(':profefa',$profefa,PDO::PARAM_STR,25);
 $sql->bindParam(':correo',$correo,PDO::PARAM_STR,25);
 $sql->bindParam(':telefa',$telefa,PDO::PARAM_STR,25);
 $sql->bindParam(':direc',$direc,PDO::PARAM_STR,25);

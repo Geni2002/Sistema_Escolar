@@ -103,11 +103,7 @@ $stmt = $connect->prepare('SELECT id, usuario,nombre ,correo,clave, rol FROM usu
                             <input class="form-control" name="clave" value="<?php if(isset($_POST['clave'])) echo MD5($_POST['clave']) ?>" required type="password" placeholder="Contraseña">
                         </div>
                     </div>
-                    <div class="checkbox checkbox-circle checkbox-success checkbox-small">
-                        <input type="checkbox" id="checkbox1">
-                        <label for="checkbox1">Recuérdame</label>
-                        <a href="#" class="pull-right">¿Olvidaste la contraseña?</a>
-                    </div>
+                    
                 </div>
                 <div class="login-panel-section">
                     <button type="submit" name='login' class="btn btn-default"><i class="fa fa-sign-in fa-fw" aria-hidden="true"></i> Iniciar sesión</button>

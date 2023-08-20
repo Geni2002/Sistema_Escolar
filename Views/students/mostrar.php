@@ -267,7 +267,6 @@ logout</span>Cerrar sesión</a>
           <th>Genero</th>
           <th>Grado</th>
           <th>Grupo</th>
-          <th>Estado</th>
           <th>Editar</th>
           <th>Eliminar</th>
         </tr>
@@ -285,14 +284,6 @@ logout</span>Cerrar sesión</a>
                <td>
                        
 
-                        <?php if($producto->state==1)  { ?> 
-        <span class="badge badge-success">Activo</span>
-    <?php  }   else {?> 
-        <span class="badge badge-danger">No activo</span>
-        <?php  } ?>  
-                            
-                    </td>
-               <td>
 <form method='POST' action='<?php $_SERVER['PHP_SELF'] ?>'>
 <input type='hidden' name='idstu' value="<?php echo  $producto->idstu; ?>">
 <button name='editar' class='btn btn-warning text-white'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></button>
@@ -300,7 +291,7 @@ logout</span>Cerrar sesión</a>
                    
                </td>
                <td>
-<form  onsubmit="return confirm('Realmente desea eliminar el registro?');" method='POST' action='<?php $_SERVER['PHP_SELF'] ?>'>
+<form  onsubmit="return confirm('Realmente desea eliminar el registro?');" method='POST' action= '<?php $_SERVER['PHP_SELF'] ?>'>
 <input type='hidden' name='idstu' value="<?php echo  $producto->idstu; ?>">
 <button name='eliminar' class='btn btn-danger text-white' ><i class='material-icons'  title='Delete'>&#xE872;</i></button>
 </form>
@@ -376,7 +367,6 @@ $obj = $stmt->fetchObject();
       <label for="nombres">Grado</label>
       <select required name="sexes" class="form-control">
     <option value="<?php echo $obj->grado;?>"><?php echo $obj->grado;?></option>        
-    <option value=""><< >></option>
     <option value="Primer año">Primer año</option>
     <option value="Segundo año">Segundo año</option>
     <option value="Tercer año">Tercer año</option>
@@ -603,7 +593,7 @@ $obj = $stmt->fetchObject();
   // if no error occured, continue ....
   if(!isset($errMSG))
   {
-   $stmt = $connect->prepare("INSERT INTO students( nomstu, grado, grupo, sexes,fenac, state) VALUES( :nomstu,:grado,:grupo,:sexes,:fenac, '1')");
+   $stmt = $connect->prepare("INSERT INTO students ( nomstu, grado, grupo, sexes,fenac ) VALUES( :nomstu,:grado,:grupo,:sexes,:fenac )");
   
    $stmt->bindParam(':nomstu',$nomstu);
    $stmt->bindParam(':grado',$grado);
