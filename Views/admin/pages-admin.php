@@ -289,7 +289,7 @@ logout</span>Cerrar sesión</a>
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Estudiantes recientes<a href="../students/mostrar" class="btn btn-success btn-sm">Ver todos</a></h5>
+        <h5 class="card-title">Estudiantes  recientes<a href="../students/mostrar" class="btn btn-success btn-sm">  Ver todos</a></h5>
 
         
         <?php  
@@ -301,7 +301,6 @@ logout</span>Cerrar sesión</a>
             <thead class="thead-dark">
                 <tr>   
                     <th>Apellidos/Nombres</th>
-                    <th>Estado</th>
                 </tr>
             </thead>
             <tbody>
@@ -311,15 +310,6 @@ logout</span>Cerrar sesión</a>
                     <td>
                        
 
-                        <?php if($persona->state==1)  { ?> 
-        <span class="badge badge-success">Estudiando</span>
-
-    <?php  }   else {?> 
-        <span class="badge badge-danger">No estudia</span>
-        <?php  } ?>  
-                            
-                    </td>
-                </tr>
                 <?php } ?>
             </tbody>
             

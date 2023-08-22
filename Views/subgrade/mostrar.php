@@ -359,7 +359,7 @@ $obj = $stmt->fetchObject();
     </div>
     <div class="form-group col-md-6">
     <label for="nombres">Grado</label>
-      <select required name="sexes" class="form-control">
+      <select required name="grado" class="form-control">
     <option value="<?php echo $obj->grado;?>"><?php echo $obj->grado;?></option>        
     <option value="Primer año">Primer año</option>
     <option value="Segundo año">Segundo año</option>
@@ -370,7 +370,7 @@ $obj = $stmt->fetchObject();
    
   <div class="form-group col-md-6">
   <label for="nombres">Grupo</label>
-      <select required name="sexes" class="form-control">
+      <select required name="grupo" class="form-control">
     <option value="<?php echo $obj->grupo;?>"><?php echo $obj->grupo;?></option>        
     <option value="A">"A"</option>
     <option value="B">"B"</option>
