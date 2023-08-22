@@ -223,7 +223,7 @@ logout</span>Cerrar sesión</a>
 
          ?>
         <span class="count-numbers"><?php echo  $total; ?></span>
-        <span class="count-name">Estudiantes</span>
+        <span class="count-name">Administrador</span>
       </div>
     </div>
 
@@ -265,7 +265,7 @@ logout</span>Cerrar sesión</a>
 
          ?>
         <span class="count-numbers"><?php echo  $total; ?></span>
-        <span class="count-name">Administrador</span>
+        <span class="count-name">Estudiantes</span>
       </div>
     </div>
   </div>
@@ -289,7 +289,7 @@ logout</span>Cerrar sesión</a>
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Estudiantes  recientes<a href="../students/mostrar" class="btn btn-success btn-sm">  Ver todos</a></h5>
+        <h5 class="card-title">Estudiantes recientes<a href="../students/mostrar" class="btn btn-success btn-sm">Ver todos</a></h5>
 
         
         <?php  
