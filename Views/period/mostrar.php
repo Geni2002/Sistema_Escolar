@@ -177,11 +177,7 @@ person_outline
 
 										</a>
                                     </li>
-                                    <li>
-                                        <a href="#"><span class="material-icons">
-settings
-</span>Configuración</a>
-                                    </li>
+                                    
                                     <li>
                                         <a href="../pages-logout.php"><span class="material-icons">
 logout</span>Cerrar sesión</a>
