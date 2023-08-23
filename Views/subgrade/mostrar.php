@@ -525,7 +525,7 @@ $obj = $stmt->fetchObject();
 <?php  
 
  if(isset($_POST['agregar']))
- 
+ {
   //$username = $_POST['user_name'];// user name
   //$userjob = $_POST['user_job'];// user email
 
@@ -580,7 +580,7 @@ swal("¡Registrado!", "Agregado correctamente", "success").then(function() {
    }
 
   }
- 
+}
 ?>
 
 
