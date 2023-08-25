@@ -70,7 +70,7 @@ $stmt = $connect->prepare('SELECT id, usuario,nombre ,correo,clave, rol FROM usu
     <link href="../Assets/css/awesome-bootstrap-checkbox.min.css" rel="stylesheet">
     <link href="../Assets/css/font-awesome.min.css" rel="stylesheet">
     <link href="../Assets/css/style.css" rel="stylesheet">
-    <link rel="icon" type="image/png" sizes="96x96" href="../Assets/img/logo.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../Assets/img/SecTec.png">
    
 
   </head>
@@ -83,7 +83,7 @@ $stmt = $connect->prepare('SELECT id, usuario,nombre ,correo,clave, rol FROM usu
            
             <div class="login-panel">
                 <form  method="POST" autocomplete="off"   role="form">
-                <h4 class="login-panel-title">Sistema Escolar</h4>
+                <h4 class="login-panel-title">Secundaria Técnica Núm.10</h4>
                 <p class="login-panel-tagline"></p>
                   <?php
     if(isset($errMsg)){
@@ -103,11 +103,12 @@ $stmt = $connect->prepare('SELECT id, usuario,nombre ,correo,clave, rol FROM usu
                             <input class="form-control" name="clave" value="<?php if(isset($_POST['clave'])) echo MD5($_POST['clave']) ?>" required type="password" placeholder="Contraseña">
                         </div>
                     </div>
-                    
+                     
                 </div>
                 <div class="login-panel-section">
                     <button type="submit" name='login' class="btn btn-default"><i class="fa fa-sign-in fa-fw" aria-hidden="true"></i> Iniciar sesión</button>
                 </div>
+                 
             </form>
             </div>
 

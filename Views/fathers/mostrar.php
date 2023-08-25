@@ -146,9 +146,11 @@
                                   <div class="input-group-append">
                                     <button class="btn" type="submit" 
 									id="button-addon2">Buscar</button>
+                                    
                                   </div>
                                 </div>
                             </form>
+                            
                         </div>
                     </div>
                     <!-- End XP Col -->

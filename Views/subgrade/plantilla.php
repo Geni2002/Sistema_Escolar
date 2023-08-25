@@ -52,17 +52,18 @@ $pdf->SetDrawColor(255, 255, 255);
 // Cell(ancho , alto,texto,borde(0/1),salto(0/1),alineacion(L,C,R),rellenar(0/1)
 
 $pdf->SetFont('Arial','B',10);
-$pdf->Cell(20, 12, utf8_decode('N°'),1,0,'C',1);
-$pdf->Cell(50, 12, utf8_decode('Grado'),1,0,'C',1);
-$pdf->Cell(120, 12, utf8_decode('Subgrado'),1,1,'C',1);
-
+$pdf->Cell(15, 12, utf8_decode('N°'),1,0,'C',1);
+$pdf->Cell(70, 12, utf8_decode('Nombre'),1,0,'C',1);
+$pdf->Cell(30, 12, utf8_decode('Grado'),1,0,'C',1);
+$pdf->Cell(30, 12, utf8_decode('Grupo'),1,0,'C',1);
+$pdf->Cell(30, 12, utf8_decode('Conducta'),1,1,'C',1);
 
 //$conexion=mysqli_connect("localhost","root","","sistema_escolar")or die("error conexion");
 require('../../Config/config.php');
 
 //$consulta = "SELECT * FROM period";
 //$resultado = mysqli_query($conexion,$consulta);
-$stmt = $connect->prepare("SELECT subgrade.idsub, degree.iddeg, degree.nomgra, subgrade.nomsub, subgrade.fere, GROUP_CONCAT(period.idper, '..', period.numperi, '..' SEPARATOR '__') AS period  FROM subgrade INNER JOIN degree ON subgrade.iddeg = degree.iddeg INNER JOIN period ON period.idper = degree.idper  GROUP BY subgrade.idsub");
+$stmt = $connect->prepare("SELECT * FROM  subgrade");
 $stmt->setFetchMode(PDO::FETCH_ASSOC);
 $stmt->execute();
 
@@ -74,8 +75,11 @@ $pdf->SetFillColor(255,255,255);
 $pdf->SetDrawColor(65, 61, 61); 
 
 $pdf->Cell(20, 8, utf8_decode($row['idsub']),'B',0,'C',1);
-$pdf->Cell(50, 8, utf8_decode($row['nomgra']),'B',0,'C',1);
-$pdf->Cell(120, 8, utf8_decode($row['nomsub']),'B',1,'C',1);
+$pdf->Cell(20, 8, utf8_decode($row['nomsub']),'B',0,'C',1);
+$pdf->Cell(20, 8, utf8_decode($row['grado']),'B',1,'C',1);
+$pdf->Cell(20, 8, utf8_decode($row['grupo']),'B',1,'C',1);
+$pdf->Cell(20, 8, utf8_decode($row['conducta']),'B',1,'C',1);
+
   
     /*$pdf->Cell(25,9, $row['status'], 0 ,1, 'C',1);*/
   

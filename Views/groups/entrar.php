@@ -95,7 +95,7 @@
                 </li>
 
                 <li  class="">
-                    <a href="../teachers/mostrar"><i class="material-icons">psychology</i><span>Docentes
+                    <a href="../teachers/mostrar"><i class="material-icons">psychology</i><span>Condición 
 
                     </span></a>
                 </li>
