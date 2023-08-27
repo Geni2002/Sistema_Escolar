@@ -47,7 +47,7 @@
 		     <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3><img src="../../Assets/img/logo.png" class="img-fluid"/><span>Sistema escolar</span></h3>
+                <h3><img src="../../Assets/img/SecTec.png" class="img-fluid"/><span>Sistema escolar</span></h3>
             </div>
 
 
@@ -424,17 +424,18 @@ $obj = $stmt->fetchObject();
                             <span>&times;</span>
                         </button>
                     </div>
+                   
                 <div class="modal-body">
                 <div id="step1"> 
 
-                            <div class="col-sm-6">
+                          
                                 <div class="form-group">
                                  
                                     <div class="input-group">       
                                         <input type="text"  name="txtnoms" placeholder="Nombre y apellidos" required class="form-control"/>
                                     </div>
                                 </div>
-                            </div>
+                           
                     </div>
 
                     <div class="form-row">

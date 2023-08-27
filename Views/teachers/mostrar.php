@@ -49,7 +49,7 @@
 		     <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3><img src="../../Assets/img/logo.png" class="img-fluid"/><span>Sistema escolar</span></h3>
+                <h3><img src="../../Assets/img/SecTec.png" class="img-fluid"/><span>Sistema escolar</span></h3>
             </div>
 
 
