@@ -226,8 +226,7 @@ logout</span>Cerrar sesión</a>
           <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
           <i class="material-icons">&#xE147;</i> </a>
 
-          <a href="plantilla.php" class="btn btn-danger">
-          <i class="material-icons">print</i> </a>
+         
          
         </div>
       </div>

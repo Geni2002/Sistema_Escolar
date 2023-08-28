@@ -321,7 +321,13 @@ $obj = $stmt->fetchObject();
       <label for="nombres">Correo</label>
       <input value="<?php echo $obj->correo;?>" name="correo" type="text" class="form-control" placeholder="Correo">
     </div>
+
+    <div class="form-group col-md-6">
+      <label for="nombres">Contraseña</label>
+      <input value="<?php echo $obj->clave;?>" name="clave" type="text" class="form-control" placeholder="Clave">
+    </div>
   </div>
+
 
         <div class="form-group">
           <button name="actualizar" type="submit" class="btn btn-primary  btn-block">Actualizar Registro</button>
