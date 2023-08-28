@@ -54,9 +54,9 @@ $pdf->SetDrawColor(255, 255, 255);
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(20, 12, utf8_decode('N°'),1,0,'C',1);
 $pdf->Cell(70, 12, utf8_decode('Nombre'),1,0,'C',1);
-$pdf->Cell(30, 12, utf8_decode('Direccion'),1,1,'C',1);
+$pdf->Cell(30, 12, utf8_decode('Direccion'),1,0,'C',1);
 $pdf->Cell(30, 12, utf8_decode('Teléfono'),1,0,'C',1);
-$pdf->Cell(30, 12, utf8_decode('Correo'),1,0,'C',1);
+$pdf->Cell(30, 12, utf8_decode('Correo'),1,1,'C',1);
 
 
 //$conexion=mysqli_connect("localhost","root","","sistema_escolar")or die("error conexion");
