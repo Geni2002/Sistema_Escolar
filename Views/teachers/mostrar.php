@@ -224,7 +224,7 @@ logout</span>Cerrar sesión</a>
     <div class="table-title">
       <div class="row">
         <div class="col-sm-6 p-0 d-flex justify-content-lg-start justify-content-center">
-          <h2 class="ml-lg-2">Condicion</h2>
+          <h2 class="ml-lg-2">Condicion de salud de los Alumnos</h2>
         </div>
 
         <div class="col-sm-12 p-0 d-flex justify-content-lg-end justify-content-center">

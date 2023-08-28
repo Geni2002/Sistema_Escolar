@@ -211,7 +211,7 @@ logout</span>Cerrar sesión</a>
         <i class="material-icons">sentiment_very_satisfied</i>
           <?php require '../../Config/config.php'; ?>
          <?php 
-        $sql = "SELECT COUNT(*) total FROM students";
+        $sql = "SELECT COUNT(*) total FROM usuarios";
         $result = $connect->query($sql); //$pdo sería el objeto conexión
         $total = $result->fetchColumn();
 
@@ -253,7 +253,7 @@ logout</span>Cerrar sesión</a>
       <div class="card-counter info">
         <i class="material-icons">person_outline</i>
          <?php 
-        $sql = "SELECT COUNT(*) total FROM usuarios";
+        $sql = "SELECT COUNT(*) total FROM students";
         $result = $connect->query($sql); //$pdo sería el objeto conexión
         $total = $result->fetchColumn();
 
