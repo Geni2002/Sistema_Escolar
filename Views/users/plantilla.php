@@ -55,7 +55,7 @@ $pdf->SetFont('Arial','B',10);
 $pdf->Cell(20, 12, utf8_decode('N°'),1,0,'C',1);
 $pdf->Cell(70, 12, utf8_decode('Nombre'),1,0,'C',1);
 $pdf->Cell(30, 12, utf8_decode('Usuario'),1,0,'C',1);
-$pdf->Cell(30, 12, utf8_decode('Correo'),1,0,'C',1);
+$pdf->Cell(30, 12, utf8_decode('Telefono'),1,0,'C',1);
 $pdf->Cell(30, 12, utf8_decode('Contraseña'),1,1,'C',1);
 
 
@@ -78,7 +78,7 @@ $pdf->SetDrawColor(65, 61, 61);
 $pdf->Cell(20, 8, utf8_decode($row['id']),'B',0,'C',1);
 $pdf->Cell(70, 8, utf8_decode($row['nombre']),'B',0,'C',1);
 $pdf->Cell(30, 8, utf8_decode($row['usuario']),'B',0,'C',1);
-$pdf->Cell(30, 8, utf8_decode($row['correo']),'B',0,'C',1);
+$pdf->Cell(30, 8, utf8_decode($row['telefono']),'B',0,'C',1);
 $pdf->Cell(30, 8, utf8_decode($row['clave']),'B',1,'C',1);
   
     /*$pdf->Cell(25,9, $row['status'], 0 ,1, 'C',1);*/

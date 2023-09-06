@@ -88,29 +88,13 @@
                 </li>
 
                 <li  class="">
-                    <a href="../fathers/mostrar"><i class="material-icons">supervisor_account</i><span>Padres
+                    <a href="../fathers/mostrar"><i class="material-icons">supervisor_account</i><span>Tutores
 
                     </span></a>
                 </li>
-
-                <li  class="">
-                    <a href="../subgrade/mostrar"><i class="material-icons">dynamic_feed</i><span>Conducta
-
-                    </span></a>
-                </li>
-
-                <li  class="">
-                    <a href="../teachers/mostrar"><i class="material-icons">psychology</i><span>Condición 
-
-                    </span></a>
-                </li>
-
 
                 
 
-        
-
-              
                
             </ul>
         </nav>
@@ -224,8 +208,6 @@ logout</span>Cerrar sesión</a>
           <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
           <i class="material-icons">&#xE147;</i> </a>
 
-          <a href="plantilla.php" class="btn btn-danger">
-          <i class="material-icons">print</i> </a>
          
         </div>
       </div>
@@ -238,9 +220,8 @@ logout</span>Cerrar sesión</a>
         
           <th>Nombre</th>
           <th>Usuario</th>
-          <th>Correo</th>
+          <th>Telefono</th>
           <th>Permisos</th>
-          <th>Estado</th>
           <th>Editar</th>
           <th>Eliminar</th>
         </tr>
@@ -249,7 +230,7 @@ logout</span>Cerrar sesión</a>
  require '../../Config/config.php';
        ?>
 <?php
-$sql = "SELECT usuarios.id, usuarios.usuario, usuarios.nombre, usuarios.correo, usuarios.rol, usuarios.estado FROM usuarios"; 
+$sql = "SELECT usuarios.id, usuarios.usuario, usuarios.nombre, usuarios.telefono, usuarios.rol FROM usuarios"; 
 $stmt = $connect -> prepare($sql); 
 $stmt -> execute(); 
 $results = $stmt -> fetchAll(PDO::FETCH_OBJ); 
@@ -261,9 +242,8 @@ echo "
 <tr>
 <td>".$result -> nombre."</td>
 <td>".$result -> usuario."</td>
-<td>".$result -> correo."</td>
+<td>".$result -> telefono."</td>
 <td>".$result -> rol."</td>
-<td>".$result -> estado."</td>
 
 <td>
 <form method='POST' action='".$_SERVER['PHP_SELF']."'>
@@ -318,8 +298,8 @@ $obj = $stmt->fetchObject();
 
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="nombres">Correo</label>
-      <input value="<?php echo $obj->correo;?>" name="correo" type="text" class="form-control" placeholder="Correo">
+    <label for="nombres">Teléfono</label>
+      <input value="<?php echo $obj->telefono;?>" name="telefono" maxlength="15"  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" type="text" class="form-control" placeholder="Teléfono móvil">
     </div>
 
     <div class="form-group col-md-6">
@@ -399,33 +379,17 @@ $obj = $stmt->fetchObject();
                                 </div>
                             </div>
                         </div>
+                        
 
-                         <div class="form-row">
-
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="modal_contact_lastname">Estado</label>
+                        <div class="form-group">
+                                 
+                                 <div class="input-group"> 
+                                    <label for="modal_contact_firstname">Teléfono</label>
                                     <div class="input-group">
-                                        <select class="form-control" required name="txtesta">
-                                          <option selected>SELECCIONE</option>
-                                          <option value="1">Activo</option>
-                                         
-                                        </select>
+                                        <input type="text" name="txttel" maxlength="15" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="Teléfono" required class="form-control"/>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="modal_contact_firstname">Correo</label>
-                                    <div class="input-group">
-                                       
-                                        <input type="email"  name="txtcorr" required class="form-control" placeholder="Correo" />
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
                     
                     </div>
                     <div class="modal-footer">
@@ -476,21 +440,19 @@ $obj = $stmt->fetchObject();
 if(isset($_POST['agregar'])){
 $usuario=$_POST['txtusua'];
 $nombre=$_POST['txtnomu'];
-$correo=$_POST['txtcorr'];
+$telefono=$_POST['txttel'];
 $clave=MD5($_POST['txtcont']);
 $rol=$_POST['txtperm'];
-$estado=$_POST['txtesta'];
-$sql = "INSERT INTO usuarios (usuario, nombre, correo, clave, rol, estado) VALUES (:usuario, :nombre,:correo,:clave,:rol,:estado)";
+$sql = "INSERT INTO usuarios (usuario, nombre, telefono, clave, rol) VALUES (:usuario, :nombre,:telefono,:clave,:rol)";
 //Prepare our statement.
 $statement = $connect->prepare($sql);
 
 //Bind our values to our parameters (we called them :make and :model).
 $statement->bindValue(':usuario', $usuario);
 $statement->bindValue(':nombre', $nombre);
-$statement->bindValue(':correo', $correo);
+$statement->bindValue(':telefono', $telefono);
 $statement->bindValue(':clave', $clave);
 $statement->bindValue(':rol', $rol);
-$statement->bindValue(':estado',$estado);
 
 //Execute the statement and insert our values.
 $inserted = $statement->execute();
@@ -555,18 +517,18 @@ if(isset($_POST['actualizar'])){
 $id=trim($_POST['id']);
 $usuario=trim($_POST['usuario']);
 $nombre=trim($_POST['nombre']);
-$correo=trim($_POST['correo']);
+$telefono=trim($_POST['telefono']);
 
 
 ///////// Fin informacion enviada por el formulario /// 
 
 ////////////// Actualizar la tabla /////////
 $consulta = "UPDATE usuarios
-SET `usuario`= :usuario, `nombre` = :nombre, `correo` = :correo WHERE `id` = :id";
+SET `usuario`= :usuario, `nombre` = :nombre, `telefono` = :telefono WHERE `id` = :id";
 $sql = $connect->prepare($consulta);
 $sql->bindParam(':usuario',$usuario,PDO::PARAM_STR, 25);
 $sql->bindParam(':nombre',$nombre,PDO::PARAM_STR, 25);
-$sql->bindParam(':correo',$correo,PDO::PARAM_STR,25);
+$sql->bindParam(':telefono',$telefono,PDO::PARAM_STR,25);
 $sql->bindParam(':id',$id,PDO::PARAM_INT);
 
 $sql->execute();

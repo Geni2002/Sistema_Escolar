@@ -93,24 +93,6 @@
                     </span></a>
                 </li>
 
-                <li  class="">
-                    <a href="../subgrade/mostrar"><i class="material-icons">dynamic_feed</i><span>Conducta
-
-                    </span></a>
-                </li>
-
-                <li  class="">
-                    <a href="../teachers/mostrar"><i class="material-icons">psychology</i><span>Condición 
-
-                    </span></a>
-                </li>
-
-               
-
-                
-
-                
-
                 
                
             </ul>

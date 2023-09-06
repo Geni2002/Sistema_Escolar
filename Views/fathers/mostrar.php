@@ -88,28 +88,10 @@
                 </li>
 
                 <li  class="active">
-                    <a href="../fathers/mostrar"><i class="material-icons">supervisor_account</i><span>Padres
+                    <a href="../fathers/mostrar"><i class="material-icons">supervisor_account</i><span>Tutores
 
                     </span></a>
                 </li>
-
-                <li  class="">
-                    <a href="../subgrade/mostrar"><i class="material-icons">dynamic_feed</i><span>Conducta 
-
-                    </span></a>
-                </li>
-
-                <li  class="">
-                    <a href="../teachers/mostrar"><i class="material-icons">psychology</i><span>Condición
-
-                    </span></a>
-                </li>
-
-               
-
-            
-
-                
 
                
             </ul>
@@ -226,8 +208,7 @@ logout</span>Cerrar sesión</a>
           <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
           <i class="material-icons">&#xE147;</i> </a>
 
-          <a href="plantilla.php" class="btn btn-danger">
-          <i class="material-icons">print</i> </a>
+          
          
         </div>
       </div>
@@ -256,9 +237,10 @@ logout</span>Cerrar sesión</a>
           
          
           <th>Nombre</th>
-          <th>Direccion</th>
-          <th>Teléfono</th>
-          <th>Correo</th>
+          <th>Grado</th>
+          <th>Grupo</th>
+          <th>tutor</th>
+          <th>telefono</th>
           <th>Editar</th>
           <th>Eliminar</th>
         </tr>
@@ -268,10 +250,11 @@ logout</span>Cerrar sesión</a>
             <tr>
              
               
-               <td><?php echo $producto->nomfa ?> </td>
-               <td><?php echo $producto->direc ?></td>
-               <td><?php echo $producto->telefa ?></td>
-               <td><?php echo $producto->correo ?></td>
+               <td><?php echo $producto->nomfa ?></td>
+               <td><?php echo $producto->grado ?></td>
+               <td><?php echo $producto->grupo ?></td>
+               <td><?php echo $producto->tutor?></td>
+               <td><?php echo $producto->telefa?></td>
                <td>
                        
 
@@ -354,21 +337,44 @@ $obj = $stmt->fetchObject();
       <input value="<?php echo $obj->nomfa;?>" name="nomfa" type="text" placeholder="Nombre y apellidos" class="form-control">
     </div>
     <div class="form-group col-md-6">
-    <label for="nombres">Correo</label>
-      <input value="<?php echo $obj->correo;?>" name="correo" type="email" class="form-control" placeholder="Correo">
+    <label for="nombres">Grado</label>
+      <select required name="grado" class="form-control">
+    <option value="<?php echo $obj->grado;?>"><?php echo $obj->grado;?></option>        
+    <option value="Primer año">Primer año</option>
+    <option value="Segundo año">Segundo año</option>
+    <option value="Tercer año">Tercer año</option>
+    
+    </select>
     </div>
- 
+   
+  <div class="form-group col-md-6">
+  <label for="nombres">Grupo</label>
+      <select required name="grupo" class="form-control">
+    <option value="<?php echo $obj->grupo;?>"><?php echo $obj->grupo;?></option>        
+    <option value="A">"A"</option>
+    <option value="B">"B"</option>
+    <option value="C">"C"</option>
+    <option value="D">"D"</option>
+    <option value="E">"E"</option>
+    <option value="F">"F"</option>
+    
+    </select>
+    </div>
 
-     <div class="form-group col-md-6">
-     <label for="nombres">Teléfono</label>
-      <input value="<?php echo $obj->telefa;?>" name="telefa" maxlength="15"  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" type="text" class="form-control" placeholder="Teléfono móvil">
-    </div>
-  
+    <div class="form-row">
     <div class="form-group col-md-6">
-    <label for="nombres">Dirección</label>
-      <input value="<?php echo $obj->direc;?>" name="direc" type="text" class="form-control" placeholder="Dirección">
+    <label for="edad">Nombre y apellidos</label>
+      <input value="<?php echo $obj->tutor;?>" name="tutor" type="text" placeholder="Nombre y apellidos" class="form-control">
     </div>
+
+   
+  <div class="form-group col-md-6">
+  <label for="nombres">Teléfono</label>
+      <input value="<?php echo $obj->telefa;?>" name="telefa" maxlength="15"  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" type="text" class="form-control" placeholder="Teléfono móvil">
+    
     </div>
+
+  </div>
    
         <div class="form-group">
           <button name="actualizar" type="submit" class="btn btn-primary  btn-block">Actualizar Registro</button>
@@ -391,47 +397,75 @@ $obj = $stmt->fetchObject();
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-row">
-                            <div class="col-sm-6">
+                <div id="step1"> 
+
                                 <div class="form-group">
+                                    <div class="input-group"> 
                                 <label for="modal_contact_lastname">Nombre y apellidos</label>
                                     <div class="input-group">       
                                         <input type="text"  name="txtnom" placeholder="Nombre y apellidos" required class="form-control"/>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+
+                            <div class="form-row">
+                             <div class="col-sm-6">
                                 <div class="form-group">
-                                <label for="modal_contact_firstname">Correo</label>
-                                    <div class="input-group">
-                                        <input type="email"  name="txtcor" required class="form-control" placeholder="Correo" />
-                                   
+                                    
+                                    <div class="input-group">      
+                                    <select class="form-control" required name="txtcors">
+                                          <option selected>Grado</option>
+                                          <option value="Primer año">Primer año</option>
+                                          <option value="Segundo año">Segundo año</option>
+                                          <option value="Tercer año">Tercer año</option>
+                                          </select>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                   
 
+                    <div class="col-sm-6">
+                                <div class="form-group">
+                                    
+                                    <div class="input-group">
 
+                                    <select class="form-control" required name="txtedas">
+                                          <option selected>Grupo</option>
+                                          <option value="A">"A"</option>
+                                          <option value="B">"B"</option>
+                                          <option value="C">"C"</option>
+                                          <option value="D">"D"</option>
+                                          <option value="E">"E"</option>
+                                          <option value="F">"F"</option>
+                                          </select>
+                                           
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            
                         <div class="form-row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                <label for="modal_contact_firstname">Teléfono</label>
-                                    <div class="input-group">
-                                        <input type="text" name="txttel" maxlength="15" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="Teléfono" required class="form-control"/>
-                                    
+                                <label for="modal_contact_lastname">Nombre y apellidos</label>
+                                    <div class="input-group">       
+                                        <input type="text"  name="txtsexs" placeholder="Nombre y apellidos" required class="form-control"/>     
                                     </div>
                                 </div>
                             </div>
+                   
+
 
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                <label for="modal_contact_firstname">Dirección</label>
+                                    
                                     <div class="input-group">
-                                        <input type="text" name="txtdir" placeholder="Dirección" required class="form-control"/>
+                                    <label for="modal_contact_firstname">Teléfono</label>
+                                    <div class="input-group">
+                                        <input type="text" name="txttel" maxlength="15" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="Teléfono" required class="form-control"/>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                          
                         
 
@@ -488,39 +522,44 @@ $obj = $stmt->fetchObject();
 
 
    
-    $nomfa=$_POST['txtnom'];
-    $correo=$_POST['txtcor'];
-    $telefa=$_POST['txttel'];
-    $direc=$_POST['txtdir'];
-
+  $nomfa=$_POST['txtnom'];
+  $grado=$_POST['txtcors'];
+  $grupo=$_POST['txtedas'];
+  $tutor=$_POST['txtsexs'];
+  $telefa=$_POST['txttel'];
   
-    
 
-  
- if(empty($nomfa)){
-   $errMSG = "Please Enter your name.";
-  }
-  else if(empty($correo)){
-   $errMSG = "Please Enter your email.";
-  }
 
-  else if(empty($telefa)){
-   $errMSG = "Please Enter your phone.";
-  }
+if(empty($nomfa)){
+ $errMSG = "Please Enter your name.";
+}
+else if(empty($grado)){
+ $errMSG = "Please Enter your grado.";
+}
 
-  else if(empty($direc)){
-   $errMSG = "Please Enter your address.";
-  }
+else if(empty($grupo)){
+ $errMSG = "Please Enter your grupo.";
+}
+
+else if(empty($tutor)){
+ $errMSG = "Please Enter your tutor.";
+}
+
+else if(empty($telefa)){
+ $errMSG = "Please Enter your telefono.";
+}
   
   
   // if no error occured, continue ....
   if(!isset($errMSG))
   {
-   $stmt = $connect->prepare("INSERT INTO fathers( nomfa, correo, telefa,direc,state) VALUES(:nomfa,:correo,:telefa,:direc, '1')");
+   $stmt = $connect->prepare("INSERT INTO fathers( nomfa, grado, grupo, tutor, telefa ) VALUES( :nomfa,:grado,:grupo,:tutor,:telefa )");
+   
    $stmt->bindParam(':nomfa',$nomfa);
-   $stmt->bindParam(':correo',$correo);
+   $stmt->bindParam(':grado',$grado);
+   $stmt->bindParam(':grupo',$grupo);
+   $stmt->bindParam(':tutor',$tutor);
    $stmt->bindParam(':telefa',$telefa);
-   $stmt->bindParam(':direc',$direc);
 
    
    if($stmt->execute())
@@ -584,22 +623,24 @@ print_r($sql->errorInfo());
     
 if(isset($_POST['actualizar'])){
 ///////////// Informacion enviada por el formulario /////////////
-$idfa=trim($_POST['idfa']);
+$idsub=trim($_POST['idfa']);
 $nomfa=trim($_POST['nomfa']);
-$correo=trim($_POST['correo']);
+$grado=trim($_POST['grado']);
+$grupo=trim($_POST['grupo']);
+$tutor=trim($_POST['tutor']);
 $telefa=trim($_POST['telefa']);
-$direc=trim($_POST['direc']);
 
 
 ////////////// Actualizar la tabla /////////
 $consulta = "UPDATE fathers
-SET  `nomfa` = :nomfa,  `correo` = :correo, `telefa` = :telefa, `direc` = :direc WHERE `idfa` = :idfa";
+SET  `nomfa` = :nomfa, `grado` = :grado, `grupo` = :grupo,  `tutor` = :tutor, `telefa` = :telefa WHERE `idfa` = :idfa";
 $sql = $connect->prepare($consulta);
 $sql->bindParam(':nomfa',$nomfa,PDO::PARAM_STR, 25);
-$sql->bindParam(':correo',$correo,PDO::PARAM_STR,25);
+$sql->bindParam(':grado',$grado,PDO::PARAM_STR,25);
+$sql->bindParam(':grupo',$grupo,PDO::PARAM_STR,25);
+$sql->bindParam(':tutor',$tutor,PDO::PARAM_STR,25);
 $sql->bindParam(':telefa',$telefa,PDO::PARAM_STR,25);
-$sql->bindParam(':direc',$direc,PDO::PARAM_STR,25);
-$sql->bindParam(':idfa',$idfa,PDO::PARAM_INT);
+$sql->bindParam(':idfa',$idsub,PDO::PARAM_INT);
 
 $sql->execute();
 

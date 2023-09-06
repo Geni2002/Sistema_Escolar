@@ -84,22 +84,12 @@
                 </li>
 
                 <li  class="">
-                    <a href="../fathers/mostrar"><i class="material-icons">supervisor_account</i><span>Padres
+                    <a href="../fathers/mostrar"><i class="material-icons">supervisor_account</i><span>Tutores
 
                     </span></a>
                 </li>
 
-                <li  class="">
-                    <a href="../subgrade/mostrar"><i class="material-icons">dynamic_feed</i><span>Conducta 
-
-                    </span></a>
-                </li>
-
-                <li  class="">
-                    <a href="../teachers/mostrar"><i class="material-icons">psychology</i><span>Condición 
-
-                    </span></a>
-                </li>
+                
 
             
 
@@ -221,45 +211,8 @@ logout</span>Cerrar sesión</a>
       </div>
     </div>
 
-    <div class="col-md-3">
-      <div class="card-counter danger">
-        <i class="material-icons">psychology</i>
-         <?php 
-        $sql = "SELECT COUNT(*) total FROM teachers";
-        $result = $connect->query($sql); //$pdo sería el objeto conexión
-        $total = $result->fetchColumn();
+    
 
-         ?>
-        <span class="count-numbers"><?php echo  $total; ?></span>
-        <span class="count-name">Condiciones Alumnos</span>
-      </div>
-    </div>
-
-    <div class="col-md-3">
-      <div class="card-counter success">
-        <i class="material-icons">supervisor_account</i>
-         <?php 
-        $sql = "SELECT COUNT(*) total FROM fathers";
-        $result = $connect->query($sql); //$pdo sería el objeto conexión
-        $total = $result->fetchColumn();
-
-         ?>
-        <span class="count-numbers"><?php echo  $total; ?></span>
-        <span class="count-name">Padres</span>
-      </div>
-    </div>
-
-    <div class="col-md-3">
-      <div class="card-counter info">
-        <i class="material-icons">person_outline</i>
-         <?php 
-        $sql = "SELECT COUNT(*) total FROM students";
-        $result = $connect->query($sql); //$pdo sería el objeto conexión
-        $total = $result->fetchColumn();
-
-         ?>
-        <span class="count-numbers"><?php echo  $total; ?></span>
-        <span class="count-name">Estudiantes</span>
       </div>
     </div>
   </div>
@@ -280,38 +233,8 @@ logout</span>Cerrar sesión</a>
     </div>
   </div>
 
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Estudiantes recientes<a href="../students/mostrar" class="btn btn-success btn-sm">Ver todos</a></h5>
-
-        
-        <?php  
-        $sentencia = $connect->query("SELECT * FROM students ORDER BY idstu ASC LIMIT 3;");
-        $personas = $sentencia->fetchAll(PDO::FETCH_OBJ);
-
-        ?>
-        <table class="table table-striped table-hover">
-            <thead class="thead-dark">
-                <tr>   
-                    <th>Apellidos/Nombres</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach($personas as $persona){ ?>
-                <tr>
-                    <td><?php echo $persona->nomstu ?></td>
-                    <td>
-                       
-
-                <?php } ?>
-            </tbody>
-            
-        </table>
-
-      </div>
-    </div>
-  </div>
+ 
+               
 
 
 

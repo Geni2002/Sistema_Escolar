@@ -93,29 +93,12 @@
                 </li>
 
                 <li  class="">
-                    <a href="../fathers/mostrar"><i class="material-icons">supervisor_account</i><span>Padres
-
-                    </span></a>
-                </li>
-
-                <li  class="">
-                    <a href="../subgrade/mostrar"><i class="material-icons">dynamic_feed</i><span>Conducta
-
-                    </span></a>
-                </li>
-
-                <li  class="">
-                    <a href="../teachers/mostrar"><i class="material-icons">psychology</i><span>Condición 
+                    <a href="../fathers/mostrar"><i class="material-icons">supervisor_account</i><span>Tutores
 
                     </span></a>
                 </li>
 
                 
-
-
-                
-
-               
                
             </ul>
         </nav>
@@ -229,8 +212,7 @@ logout</span>Cerrar sesión</a>
           <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
           <i class="material-icons">&#xE147;</i> </a>
 
-          <a href="plantilla.php" class="btn btn-danger">
-          <i class="material-icons">print</i> </a>
+
          
         </div>
       </div>
@@ -259,10 +241,10 @@ logout</span>Cerrar sesión</a>
          
           
           <th>Nombre</th>
-          <th>Nacimiento</th>
-          <th>Genero</th>
           <th>Grado</th>
           <th>Grupo</th>
+          <th>Conducta</th>
+          <th>Condicion</th>
           <th>Editar</th>
           <th>Eliminar</th>
         </tr>
@@ -273,10 +255,10 @@ logout</span>Cerrar sesión</a>
                
               
                <td><?php echo $producto->nomstu ?></td>
-               <td><?php echo $producto->fenac ?></td>
-               <td><?php echo $producto->sexes ?></td>
                <td><?php echo $producto->grado ?></td>
                <td><?php echo $producto->grupo ?></td>
+               <td><?php echo $producto->conducta ?></td>
+               <td><?php echo $producto->condicion?></td>
                <td>
                        
 
@@ -366,9 +348,7 @@ $obj = $stmt->fetchObject();
     <option value="Primer año">Primer año</option>
     <option value="Segundo año">Segundo año</option>
     <option value="Tercer año">Tercer año</option>
-    
     </select>
-
   </div>
    
   <div class="form-group col-md-6">
@@ -381,26 +361,18 @@ $obj = $stmt->fetchObject();
     <option value="D">"D"</option>
     <option value="E">"E"</option>
     <option value="F">"F"</option>
-    
     </select>
     </div>
 
     <div class="form-group col-md-6">
-      <label for="nombres">Sexo</label>
-      <select required name="sexes" class="form-control">
-    <option value="<?php echo $obj->sexes;?>"><?php echo $obj->sexes;?></option>        
-    <option value="Masculino">Masculino</option>
-    <option value="Femenino">Femenino</option>
-    
-    </select>
+    <label for="edad">Conducta</label>
+      <input value="<?php echo $obj->conducta;?>" name="conducta" type="text" placeholder="Conducta" class="form-control">
     </div>
 
-  </div>
 
-  <div class="form-row">
      <div class="form-group col-md-6">
-      <label for="nombres">Nacimiento</label>
-      <input value="<?php echo $obj->fenac;?>" name="fenac" type="date" class="form-control">
+     <label for="edad">Condicion</label>
+      <input value="<?php echo $obj->condicion;?>" name="condicion" type="text" placeholder="condicion" class="form-control">
     </div>
     </div>
 
@@ -439,23 +411,7 @@ $obj = $stmt->fetchObject();
                     </div>
 
                     <div class="form-row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    
-                                    <div class="input-group">
-                                       
-                                    <select class="form-control" required name="txtsexs">
-                                          <option selected>GÉNERO</option>
-                                          <option value="Masculino">Masculino</option>
-                                          <option value="Femenino">Femenino</option>
-                                        </select>
-    
-                                          </select>
-                                           
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
+                    <div class="col-sm-6">
                                 <div class="form-group">
                                     
                                     <div class="input-group">
@@ -465,6 +421,26 @@ $obj = $stmt->fetchObject();
                                           <option value="Segundo año">Segundo año</option>
                                           <option value="Tercer año">Tercer año</option>
                                           </select>
+
+                                    </div>
+                                </div>
+                            </div>
+                  
+                               
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    
+                                    <div class="input-group">
+                                    <select class="form-control" required name="txtedas">
+                                          <option selected>Grupo</option>
+                                          <option value="A">"A""</option>
+                                          <option value="B">"B""</option>
+                                          <option value="C">"C""</option>
+                                          <option value="D">"D""</option>
+                                          <option value="E">"E""</option>
+                                          <option value="F">"F""</option>
+    
+                                           </select>
                                     </div>
                                 </div>
                             </div>
@@ -477,16 +453,7 @@ $obj = $stmt->fetchObject();
                                     
                                     <div class="input-group">
                                        
-                                        <select class="form-control" required name="txtedas">
-                                          <option selected>Grupo</option>
-                                          <option value="A">"A""</option>
-                                          <option value="B">"B""</option>
-                                          <option value="C">"C""</option>
-                                          <option value="D">"D""</option>
-                                          <option value="E">"E""</option>
-                                          <option value="F">"F""</option>
-    
-                                           </select>
+                                    <input type="text"  name="txtsexs" placeholder="Conducta" required class="form-control"/>
                                                </div>
                                     </div>
                                 </div>
@@ -494,17 +461,19 @@ $obj = $stmt->fetchObject();
 
                            
                    
-                        <div class="col-sm-6">
+                                <div class="col-sm-6">
                                 <div class="form-group">
-                                 
+                                    
+                                    <div class="input-group">
                                     <div class="input-group">       
-                                        <input type="date"  name="txtfecs"  required class="form-control"/>
+                                        <input type="text"  name="txtperm" placeholder="Condicion" required class="form-control"/>
                                     </div>
                                 </div>
                             </div>
-                            </div>
+                    </div>
+                     
                             
-
+                    <div class="modal-footer">
                    <button name='agregar'>GUARDAR</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>
                 </div>
@@ -562,8 +531,8 @@ $obj = $stmt->fetchObject();
     $nomstu=$_POST['txtnoms'];
     $grado=$_POST['txtcors'];
     $grupo=$_POST['txtedas'];
-    $sexes=$_POST['txtsexs'];
-    $fenac=$_POST['txtfecs'];
+    $conducta=$_POST['txtsexs'];
+    $condicion=$_POST['txtperm'];
   
   
   if(empty($nomstu)){
@@ -577,11 +546,11 @@ $obj = $stmt->fetchObject();
    $errMSG = "Please Enter your grupo.";
   }
 
-  else if(empty($sexes)){
-   $errMSG = "Please Enter your sex.";
+  else if(empty($conducta)){
+   $errMSG = "Please Enter your conducta.";
   }
-  else if(empty($fenac)){
-   $errMSG = "Please Enter your birth.";
+  else if(empty($condicion)){
+   $errMSG = "Please Enter your condicion.";
   }
 
   
@@ -590,13 +559,13 @@ $obj = $stmt->fetchObject();
   // if no error occured, continue ....
   if(!isset($errMSG))
   {
-   $stmt = $connect->prepare("INSERT INTO students ( nomstu, grado, grupo, sexes,fenac ) VALUES ( :nomstu,:grado,:grupo,:sexes,:fenac )");
+   $stmt = $connect->prepare("INSERT INTO students ( nomstu, grado, grupo, conducta,condicion ) VALUES ( :nomstu,:grado,:grupo,:conducta,:condicion )");
   
    $stmt->bindParam(':nomstu',$nomstu);
    $stmt->bindParam(':grado',$grado);
    $stmt->bindParam(':grupo',$grupo);
-   $stmt->bindParam(':sexes',$sexes);
-   $stmt->bindParam(':fenac',$fenac);
+   $stmt->bindParam(':conducta',$conducta);
+   $stmt->bindParam(':condicion',$condicion);
    
    if($stmt->execute())
    {
@@ -663,21 +632,21 @@ $idstu=trim($_POST['idstu']);
 $nomstu=trim($_POST['nomstu']);
 $grado=trim($_POST['grado']);
 $grupo=trim($_POST['grupo']);
-$sexes=trim($_POST['sexes']);
-$fenac=trim($_POST['fenac']);
+$conducta=trim($_POST['conducta']);
+$condicion=trim($_POST['condicion']);
 
 
 ///////// Fin informacion enviada por el formulario /// 
 
 ////////////// Actualizar la tabla /////////
 $consulta = "UPDATE students
-SET `nomstu` = :nomstu, `grado` = :grado, `grupo` = :grupo,  `sexes` = :sexes,`fenac` = :fenac WHERE `idstu` = :idstu";
+SET `nomstu` = :nomstu, `grado` = :grado, `grupo` = :grupo,  `conducta` = :conducta,`condicion` = :condicion WHERE `idstu` = :idstu";
 $sql = $connect->prepare($consulta);
 $sql->bindParam(':nomstu',$nomstu,PDO::PARAM_STR, 25);
 $sql->bindParam(':grado',$grado,PDO::PARAM_STR,25);
 $sql->bindParam(':grupo',$grupo,PDO::PARAM_STR,25);
-$sql->bindParam(':sexes',$sexes,PDO::PARAM_STR,25);
-$sql->bindParam(':fenac',$fenac,PDO::PARAM_STR,25);
+$sql->bindParam(':conducta',$conducta,PDO::PARAM_STR,25);
+$sql->bindParam(':condicion',$condicion,PDO::PARAM_STR,25);
 $sql->bindParam(':idstu',$idstu,PDO::PARAM_INT);
 
 $sql->execute();
