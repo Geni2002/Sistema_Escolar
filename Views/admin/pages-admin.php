@@ -85,21 +85,16 @@
 
                 <li  class="">
                     <a href="../fathers/mostrar"><i class="material-icons">supervisor_account</i><span>Tutores
-
                     </span></a>
                 </li>
 
-                
-
-            
-
-                
                
             </ul>
         </nav>
 		
 		
 		<!--------page-content---------------->
+		
 		
 		<div id="content">
 		   
@@ -117,62 +112,11 @@
 							   </span>
                          </div>
                     </div> 
-                    <!-- End XP Col -->
+                     <!-- End XP Col -->
 
-                    <!-- Start XP Col -->
-                    <div class="col-md-5 col-lg-3 order-3 order-md-2">
-                        <div class="xp-searchbar">
-                            <form>
-                                <div class="input-group">
-                                  <input type="search" class="form-control" 
-								  placeholder="Search">
-                                  <div class="input-group-append">
-                                    <button class="btn" type="submit" 
-									id="button-addon2">GO</button>
-                                  </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- End XP Col -->
-
-                    <!-- Start XP Col -->
-                    <div class="col-10 col-md-6 col-lg-8 order-1 order-md-3">
-                        <div class="xp-profilebar text-right">
-							 <nav class="navbar p-0">
-                        <ul class="nav navbar-nav flex-row ml-auto">   
-                            <li class="dropdown nav-item active">
-                                <a href="#" class="nav-link" data-toggle="dropdown">
-                                   
-                           
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="#" data-toggle="dropdown">
-								<img src="../../Assets/img/SecTec.png" style="width:30px; border-radius:50%;"/>
-								<span class="xp-user-live"></span>
-								</a>
-								<ul class="dropdown-menu small-menu">
-                                    <li>
-                                        <a href="../profile/mostrar.php">
-										  <span class="material-icons">
-person_outline
-</span>Perfil
-
-										</a>
-                                    </li>
-                                   
-                                    <li>
-                                        <a href="../pages-logout.php"><span class="material-icons">
-logout</span>Cerrar sesión</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
                     
-               
-            </nav>
-							
-                        </div>
-                    </div>
+                    <!-- Start XP Col -->
+                    
                     <!-- End XP Col -->
 
                 </div> 
@@ -193,88 +137,72 @@ logout</span>Cerrar sesión</a>
 
     <div class="main-content">
 
-       <div class="container">
-            <div class="row">
-    <div class="col-md-3">
-      <div class="card-counter primary">
-      
-        <i class="material-icons">sentiment_very_satisfied</i>
-          <?php require '../../Config/config.php'; ?>
-         <?php 
-        $sql = "SELECT COUNT(*) total FROM usuarios";
-        $result = $connect->query($sql); //$pdo sería el objeto conexión
-        $total = $result->fetchColumn();
 
-         ?>
-        <span class="count-numbers"><?php echo  $total; ?></span>
-        <span class="count-name">Administrador</span>
-      </div>
-    </div>
+    <!DOCTYPE html>
+                                    <html>
+                                    <head>
+                                        <meta charset="UTF-8">
+                                        <meta name="viewport" content="width_device-width, initial-scale_1.0">
+                                        <link rel="stylesheel" href="estilos.css">
+                                        <title>h</title>
+                                    </head>
+                                    <body>
+                                        <h1>Busqueda de datos</h1>
 
-    
+                                        <form action="" method="GET">
+                                            <div class="form-group">
+                                            <label for="nomstu">Nombre del alumno:</label>
+                                           <input type="text" class="form-control" name="students" placeholder="Busqueda de datos" required>
+                                           
+                                            <button type="submit" class="btn btn-default">Consultar</button>
+                                        </form>
 
-      </div>
-    </div>
-  </div>
- <div class="row">
+                                        <?php
+                                            
+                                            if(isset($_GET["students"]) && $_GET["students"] != ''){
+                                                //Conexion BD
+                                                $servername = "localhost";
+                                                $username = "root";
+                                                $password = "";
+                                                $database = "sistema_escolar";
+                                                $conn = new mysqli($servername, $username, $password, $database);
 
-  <div class="col-sm-6 mb-3 mb-md-0">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"><?php echo ucfirst($_SESSION['nombre']); ?></h5>
-        <p class="card-text">Nombre de usuario: <?php echo ucfirst($_SESSION['usuario']); ?></p>
-        <p class="card-text">Correo: <?php echo ucfirst($_SESSION['correo']); ?></p>
-        <p class="card-text">Rol: ADMIN</p>
-<a href="../profile/mostrar.php" class="btn btn-primary">Configuración de la cuenta</a>
-<a href="../pages-logout.php" class="btn btn-primary">Cerrar Sesión</a>
+                                                if($conn->connect_error){
+                                                    die("Error en la conexion" . $conn->connect_error);
+                                                }
 
+                                                $students = $_GET['students'];
 
-      </div>
-    </div>
-  </div>
+                                                $sql = "SELECT nomstu,grado,grupo,conducta, condicion FROM students WHERE nomstu LIKE '%$students%' "; 
+                                                $result = $conn->query($sql);
+                                            
+                                                if($result->num_rows > 0){
+                                                    echo "<ul>";
+                                                ?>
+                                                <div class="panel panel-primary">
+                                                <div class="panel-heading">INFORMACION DEL ALUMNO:</div>
+                                                <div class="panel-body">
+                                                </div>
+                                                </div>
+                                                
+                                                <?php
+                                                    
+                                                
+                                                while($row = $result->fetch_assoc()){
+                                                    echo "<li>" . "Nombre: ". $row["nomstu"] . "</li>";
+                                                    echo "<li>" . "Grado: " . $row["grado"] . "</li>";
+                                                    echo "<li>" . "Grupo: " . $row["grupo"] . "</li>" ;
+                                                    echo "<li>" . "Conducta: " . $row["conducta"] . "</li>" ;
+                                                    echo "<li>" . "Condición de salud: " . $row["condicion"] . "</li>" ;
 
- 
-               
-
-
-
-</div>
-        </div>
-
-    </div>
-		   
-</div>
-</div>
-<!----------html code compleate----------->
-  
-     <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-   <script src="../../Assets/js/jquery-3.3.1.slim.min.js"></script>
-   <script src="../../Assets/js/popper.min.js"></script>
-   <script src="../../Assets/js/bootstrap-1.min.js"></script>
-   <script src="../../Assets/js/jquery-3.3.1.min.js"></script>
-    <script src="../../Assets/DataTables/js/datatables.min.js"></script>
-  <script type="text/javascript">
-		$(document).ready(function(){
-		  $(".xp-menubar").on('click',function(){
-		    $('#sidebar').toggleClass('active');
-			$('#content').toggleClass('active');
-		  });
-		  
-		   $(".xp-menubar,.body-overlay").on('click',function(){
-		     $('#sidebar,.body-overlay').toggleClass('show-nav');
-		   });
-		  
-		});
-</script>
-<script type="text/javascript">
-    $(document).ready( function () {
-    $('#myTable').DataTable();
-} );
-</script>
-  
-  </body>
-  
-  </html>
-
-
+                                                }
+                                                echo "</ul>";
+                                            }else{
+                                                echo "<li>" . "El alumno no existe en la base de datos". "</li>";
+                                            }
+                                            //cerramos conexion 
+                                            $conn->close();
+                                                }
+                                        ?>
+                                    </body>
+                                    </html>

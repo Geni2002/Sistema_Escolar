@@ -121,20 +121,7 @@
                     <!-- End XP Col -->
 
                     <!-- Start XP Col -->
-                    <div class="col-md-5 col-lg-3 order-3 order-md-2">
-                        <div class="xp-searchbar">
-                            <form>
-                                <div class="input-group">
-                                  <input type="search" class="form-control" 
-								  placeholder="Buscar...">
-                                  <div class="input-group-append">
-                                    <button class="btn" type="submit" 
-									id="button-addon2">Buscar</button>
-                                  </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                    
                     <!-- End XP Col -->
 
                     <!-- Start XP Col -->
@@ -220,7 +207,7 @@ logout</span>Cerrar sesión</a>
         
           <th>Nombre</th>
           <th>Usuario</th>
-          <th>Telefono</th>
+          <th>Correo</th>
           <th>Permisos</th>
           <th>Editar</th>
           <th>Eliminar</th>
@@ -230,7 +217,7 @@ logout</span>Cerrar sesión</a>
  require '../../Config/config.php';
        ?>
 <?php
-$sql = "SELECT usuarios.id, usuarios.usuario, usuarios.nombre, usuarios.telefono, usuarios.rol FROM usuarios"; 
+$sql = "SELECT usuarios.id, usuarios.usuario, usuarios.nombre, usuarios.correo, usuarios.rol FROM usuarios"; 
 $stmt = $connect -> prepare($sql); 
 $stmt -> execute(); 
 $results = $stmt -> fetchAll(PDO::FETCH_OBJ); 
@@ -242,7 +229,7 @@ echo "
 <tr>
 <td>".$result -> nombre."</td>
 <td>".$result -> usuario."</td>
-<td>".$result -> telefono."</td>
+<td>".$result -> correo."</td>
 <td>".$result -> rol."</td>
 
 <td>
@@ -298,9 +285,10 @@ $obj = $stmt->fetchObject();
 
   <div class="form-row">
     <div class="form-group col-md-6">
-    <label for="nombres">Teléfono</label>
-      <input value="<?php echo $obj->telefono;?>" name="telefono" maxlength="15"  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" type="text" class="form-control" placeholder="Teléfono móvil">
+    <label for="nombres">Correo</label>
+      <input value="<?php echo $obj->correo;?>" name="correo" type="text" class="form-control" placeholder="Correo">
     </div>
+  
 
     <div class="form-group col-md-6">
       <label for="nombres">Contraseña</label>
@@ -381,12 +369,14 @@ $obj = $stmt->fetchObject();
                         </div>
                         
 
-                        <div class="form-group">
+                        <div class="form-row">
                                  
-                                 <div class="input-group"> 
-                                    <label for="modal_contact_firstname">Teléfono</label>
+                        <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="modal_contact_firstname">Correo</label>
                                     <div class="input-group">
-                                        <input type="text" name="txttel" maxlength="15" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="Teléfono" required class="form-control"/>
+                                       
+                                        <input type="email"  name="txtcorr" required class="form-control" placeholder="Correo" />
                                     </div>
                                 </div>
                             </div>
@@ -440,17 +430,17 @@ $obj = $stmt->fetchObject();
 if(isset($_POST['agregar'])){
 $usuario=$_POST['txtusua'];
 $nombre=$_POST['txtnomu'];
-$telefono=$_POST['txttel'];
+$correo=$_POST['txttel'];
 $clave=MD5($_POST['txtcont']);
 $rol=$_POST['txtperm'];
-$sql = "INSERT INTO usuarios (usuario, nombre, telefono, clave, rol) VALUES (:usuario, :nombre,:telefono,:clave,:rol)";
+$sql = "INSERT INTO usuarios (usuario, nombre, correo, clave, rol) VALUES (:usuario, :nombre,:correo,:clave,:rol)";
 //Prepare our statement.
 $statement = $connect->prepare($sql);
 
 //Bind our values to our parameters (we called them :make and :model).
 $statement->bindValue(':usuario', $usuario);
 $statement->bindValue(':nombre', $nombre);
-$statement->bindValue(':telefono', $telefono);
+$statement->bindValue(':correo', $correo);
 $statement->bindValue(':clave', $clave);
 $statement->bindValue(':rol', $rol);
 
@@ -517,18 +507,18 @@ if(isset($_POST['actualizar'])){
 $id=trim($_POST['id']);
 $usuario=trim($_POST['usuario']);
 $nombre=trim($_POST['nombre']);
-$telefono=trim($_POST['telefono']);
+$correo=trim($_POST['correo']);
 
 
 ///////// Fin informacion enviada por el formulario /// 
 
 ////////////// Actualizar la tabla /////////
 $consulta = "UPDATE usuarios
-SET `usuario`= :usuario, `nombre` = :nombre, `telefono` = :telefono WHERE `id` = :id";
+SET `usuario`= :usuario, `nombre` = :nombre, `correo` = :correo WHERE `id` = :id";
 $sql = $connect->prepare($consulta);
 $sql->bindParam(':usuario',$usuario,PDO::PARAM_STR, 25);
 $sql->bindParam(':nombre',$nombre,PDO::PARAM_STR, 25);
-$sql->bindParam(':telefono',$telefono,PDO::PARAM_STR,25);
+$sql->bindParam(':correo',$correo,PDO::PARAM_STR,25);
 $sql->bindParam(':id',$id,PDO::PARAM_INT);
 
 $sql->execute();

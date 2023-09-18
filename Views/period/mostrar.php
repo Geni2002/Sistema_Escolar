@@ -120,20 +120,7 @@
                     <!-- End XP Col -->
 
                     <!-- Start XP Col -->
-                    <div class="col-md-5 col-lg-3 order-3 order-md-2">
-                        <div class="xp-searchbar">
-                            <form>
-                                <div class="input-group">
-                                  <input type="search" class="form-control" 
-								  placeholder="Buscar...">
-                                  <div class="input-group-append">
-                                    <button class="btn" type="submit" 
-									id="button-addon2">Buscar</button>
-                                  </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                    
                     <!-- End XP Col -->
 
                     <!-- Start XP Col -->
