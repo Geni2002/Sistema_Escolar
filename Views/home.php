@@ -41,11 +41,12 @@ $stmt = $connect->prepare('SELECT id, usuario,nombre ,correo,clave, rol FROM usu
             $_SESSION['rol'] = $data['rol'];
 
 
+            
     if($_SESSION['rol'] == 1){
           header('Location: admin/pages-admin.php');
 
         }else if($_SESSION['rol'] == 2){
-          header('Location: panel-cliente/cliente.php');
+          header('Location: maestros/maestros.php');
         }
             exit;
           }

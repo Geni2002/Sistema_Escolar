@@ -221,7 +221,7 @@ logout</span>Cerrar sesión</a>
             
           
          
-          <th>Nombre</th>
+          <th>Alumno</th>
           <th>Grado</th>
           <th>Grupo</th>
           <th>tutor</th>
@@ -318,7 +318,7 @@ $obj = $stmt->fetchObject();
     <input value="<?php echo $obj->idfa;?>" name="idfa" type="hidden">
   <div class="form-row">
     <div class="form-group col-md-6">
-    <label for="edad">Nombre y apellidos</label>
+    <label for="edad">Alumno</label>
       <input value="<?php echo $obj->nomfa;?>" name="nomfa" type="text" placeholder="Nombre y apellidos" class="form-control">
     </div>
     <div class="form-group col-md-6">
@@ -348,7 +348,7 @@ $obj = $stmt->fetchObject();
 
     <div class="form-row">
     <div class="form-group col-md-6">
-    <label for="edad">Nombre y apellidos</label>
+    <label for="edad">Tutor</label>
       <input value="<?php echo $obj->tutor;?>" name="tutor" type="text" placeholder="Nombre y apellidos" class="form-control">
     </div>
 
@@ -386,7 +386,7 @@ $obj = $stmt->fetchObject();
 
                                 <div class="form-group">
                                     <div class="input-group"> 
-                                <label for="modal_contact_lastname">Nombre y apellidos</label>
+                                <label for="modal_contact_lastname">Alumno</label>
                                     <div class="input-group">       
                                         <input type="text"  name="txtnom" placeholder="Nombre y apellidos" required class="form-control"/>
                                     </div>
@@ -432,7 +432,7 @@ $obj = $stmt->fetchObject();
                         <div class="form-row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                <label for="modal_contact_lastname">Nombre y apellidos</label>
+                                <label for="modal_contact_lastname">Tutor</label>
                                     <div class="input-group">       
                                         <input type="text"  name="txtsexs" placeholder="Nombre y apellidos" required class="form-control"/>     
                                     </div>

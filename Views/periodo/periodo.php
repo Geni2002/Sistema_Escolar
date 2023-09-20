@@ -1,8 +1,7 @@
-
 <?php
    session_start();
   
-  if(!isset($_SESSION['rol']) || $_SESSION['rol'] != 1){
+  if(!isset($_SESSION['rol']) || $_SESSION['rol'] != 2){
     header('location: ../home.php');
   }
   
@@ -69,7 +68,7 @@
                 </li>
 
 			<li  class="">
-                    <a href="../admin/pages-admin.php" class="dashboard"><i class="material-icons">dashboard</i>
+                    <a href="../maestros/maestros" class="dashboard"><i class="material-icons">dashboard</i>
 					<span>Dashboard</span></a>
       </li>
 		
@@ -77,11 +76,7 @@
                     <a href="../period/mostrar"><i class="material-icons">calendar_month</i><span>Periodo escolar</span></a>
                 </li>
 				
-				 <li  class="">
-                    <a href="../users/mostrar"><i class="material-icons">person_outline</i><span>Usuarios
-
-					</span></a>
-                </li>
+				
 
                 <li  class="">
                     <a href="../students/mostrar"><i class="material-icons">sentiment_very_satisfied</i><span>Alumnos
@@ -193,11 +188,10 @@ logout</span>Cerrar sesión</a>
         </div>
 
         <div class="col-sm-12 p-0 d-flex justify-content-lg-end justify-content-center">
-          <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
-          <i class="material-icons">&#xE147;</i> </a>
+          
+         </a>
 
-          <a href="plantilla.php" class="btn btn-danger">
-          <i class="material-icons">print</i> </a>
+          
          
         </div>
       </div>
@@ -229,8 +223,7 @@ logout</span>Cerrar sesión</a>
           <th>Nombre</th>
           <th>Fecha inicio</th>
           <th>Fecha fin</th>
-          <th>Editar</th>
-          <th>Eliminar</th>
+          
         </tr>
       </thead>
 
@@ -243,23 +236,8 @@ logout</span>Cerrar sesión</a>
                <td><?php echo $producto->starperi ?></td>
                <td><?php echo $producto->endperi ?></td>
                <td>
-                       
-
-          
-<form method='POST' action='<?php $_SERVER['PHP_SELF'] ?>'>
-<input type='hidden' name='idper' value="<?php echo  $producto->idper; ?>">
-<button name='editar' class='btn btn-warning text-white'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></button>
-</form>
-                   
-               </td>
-               <td>
-<form  onsubmit="return confirm('Realmente desea eliminar el registro?');" method='POST' action='<?php $_SERVER['PHP_SELF'] ?>'>
-<input type='hidden' name='idper' value="<?php echo  $producto->idper; ?>">
-<button name='eliminar' class='btn btn-danger text-white' ><i class='material-icons'  title='Delete'>&#xE872;</i></button>
-</form>
-               </td>
-
-            </tr>
+           
+               
             <?php } ?>
       </tbody>
     </table>
@@ -303,126 +281,9 @@ logout</span>Cerrar sesión</a>
   </div>
 </div>
 
-<?php 
-
-if (isset($_POST['editar'])){
-$idper = $_POST['idper'];
-$sql= "SELECT * FROM period WHERE idper = :idper"; 
-$stmt = $connect->prepare($sql);
-$stmt->bindParam(':idper', $idper, PDO::PARAM_INT); 
-$stmt->execute();
-$obj = $stmt->fetchObject();
- 
-?>
-
-    <div class="col-12 col-md-12"> 
-
-<form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>">
-    <input value="<?php echo $obj->idper;?>" name="idper" type="hidden">
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="nombres">Periodo</label>
-      <input value="<?php echo $obj->numperi;?>" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" name="numperi" type="text" class="form-control" placeholder="Nombres">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="edad">Termina</label>
-      <input value="<?php echo $obj->endperi;?>" name="endperi" type="date" class="form-control">
-    </div>
-  </div>
 
 
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="nombres">Nombre</label>
-      <input value="<?php echo $obj->nomperi;?>" name="nomperi" type="text" class="form-control" placeholder="Nombres">
-    </div>
 
-    <div class="form-group col-md-6">
-      <label for="nombres">Inicia</label>
-      <input value="<?php echo $obj->starperi;?>" name="starperi" type="date" class="form-control">
-    </div>
-    
-  </div>
-
-        <div class="form-group">
-          <button name="actualizar" type="submit" class="btn btn-primary  btn-block">Actualizar Registro</button>
-        </div>
-</form>
-    </div>  
-<?php }?>
-
-<!-- add Modal HTML -->
-<div class="modal fade" id="addEmployeeModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <form  enctype="multipart/form-data" method="POST"  autocomplete="off">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">
-                            <i class="fa fa-user mr-1"></i>NUEVO
-                        </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span>&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="modal_contact_firstname">Periodo</label>
-                                    <div class="input-group">
-                                       
-                                        <input type="text"  name="txtperi" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required class="form-control" placeholder="Periodo escolar" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                <label for="modal_contact_firstname">Nombre</label>
-                                    <div class="input-group">
-                                       
-                                        <input type="text"  name="txtnom" required class="form-control" placeholder="Nombre" />
-                                    
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="form-row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                <label for="modal_contact_firstname">Inicia</label>
-                                    <div class="input-group">
-                                       
-                                        <input type="date" name="txtini" required class="form-control"/>
-                                
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                <label for="modal_contact_lastname">Termina</label>
-                                    <div class="input-group">
-                                         
-                                        <input type="date"  name="txttermi" required class="form-control"/>
-                                         
-                                       
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                       
-                    
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>
-                        <button  name='agregar' class="btn btn-primary">GUARDAR</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
 
 <!-- Edit Modal HTML -->
 </div>
@@ -456,47 +317,7 @@ $obj = $stmt->fetchObject();
 
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-<?php  
-if(isset($_POST['agregar'])){
 
-$numperi=$_POST['txtperi'];
-$starperi=$_POST['txtini'];
-$endperi=$_POST['txttermi'];
-$nomperi=$_POST['txtnom'];
-$state=$_POST['txtesta'];
-
-$sql = "INSERT INTO period (numperi, starperi, endperi, nomperi, state) VALUES (:numperi, :starperi,:endperi,:nomperi,:state)";
-
-
-//Prepare our statement.
-$statement = $connect->prepare($sql);
-
-
-//Bind our values to our parameters (we called them :make and :model).
-$statement->bindValue(':numperi', $numperi);
-$statement->bindValue(':starperi', $starperi);
-$statement->bindValue(':endperi', $endperi);
-$statement->bindValue(':nomperi', $nomperi);
-$statement->bindValue(':state',$state);
-
-
-//Execute the statement and insert our values.
-$inserted = $statement->execute();
-
-
-//Because PDOStatement::execute returns a TRUE or FALSE value,
-//we can easily check to see if our insert was successful.
-if($inserted){
-    echo '<script type="text/javascript">
-swal("¡Registrado!", "Agregado correctamente", "success").then(function() {
-            window.location = "mostrar";
-        });
-        </script>';
-}
-
-}
-
-?>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -508,74 +329,10 @@ $(document).ready(function() {
 </script>
 
 
-<?php  
-if(isset($_POST['eliminar'])){
-////////////// Actualizar la tabla /////////
-$consulta = "DELETE FROM `period` WHERE `idper`=:idper";
-$sql = $connect-> prepare($consulta);
-$sql -> bindParam(':idper', $idper, PDO::PARAM_INT);
-$idper=trim($_POST['idper']);
-$sql->execute();
 
-if($sql->rowCount() > 0)
-{
-$count = $sql -> rowCount();
-echo '<script type="text/javascript">
-swal("¡Eliminado!", "Eliminado correctamente", "success").then(function() {
-            window.location = "mostrar";
-        });
-        </script>';
-}
-else{
-    echo "<div class='content alert alert-danger'> No se pudo eliminar el registro  </div>";
 
-print_r($sql->errorInfo()); 
-}
-}// Cierra envio de guardado
-?>
+
   
-
-
-  <?php
-    
-if(isset($_POST['actualizar'])){
-///////////// Informacion enviada por el formulario /////////////
-$idper=trim($_POST['idper']);
-$numperi=trim($_POST['numperi']);
-$starperi=trim($_POST['starperi']);
-$endperi=trim($_POST['endperi']);
-$nomperi=trim($_POST['nomperi']);
-
-///////// Fin informacion enviada por el formulario /// 
-
-////////////// Actualizar la tabla /////////
-$consulta = "UPDATE period
-SET `numperi`= :numperi, `starperi` = :starperi, `endperi` = :endperi, `nomperi` = :nomperi WHERE `idper` = :idper";
-$sql = $connect->prepare($consulta);
-$sql->bindParam(':numperi',$numperi,PDO::PARAM_STR, 25);
-$sql->bindParam(':starperi',$starperi,PDO::PARAM_STR, 25);
-$sql->bindParam(':endperi',$endperi,PDO::PARAM_STR,25);
-$sql->bindParam(':nomperi',$nomperi,PDO::PARAM_STR,25);
-$sql->bindParam(':idper',$idper,PDO::PARAM_INT);
-
-$sql->execute();
-
-if($sql->rowCount() > 0)
-{
-$count = $sql -> rowCount();
-echo '<script type="text/javascript">
-swal("¡Actualizado!", "Actualizado correctamente", "success").then(function() {
-            window.location = "mostrar";
-        });
-        </script>';
-}
-else{
-    echo "<div class='content alert alert-danger'> No se pudo actulizar el registro  </div>";
-
-print_r($sql->errorInfo()); 
-}
-}// Cierra envio de guardado
-?>
   </body>
   
   </html>

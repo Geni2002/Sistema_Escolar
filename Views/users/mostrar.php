@@ -356,11 +356,7 @@ $obj = $stmt->fetchObject();
                                         <select class="form-control" required name="txtperm">
                                           <option selected>SELECCIONE</option>
                                           <option value="1">Administrador</option>
-                                          <option value="2">Subdirector</option>
-                                          <option value="3">Secretaria</option>
-                                          <option value="4">Trabajo Social</option>
-                                          <option value="5">Perfecto</option>
-                                          <option value="6">Maestr@</option>
+                                          <option value="2">Maestr@</option>
                                          
                                         </select>
                                     </div>
@@ -430,10 +426,10 @@ $obj = $stmt->fetchObject();
 if(isset($_POST['agregar'])){
 $usuario=$_POST['txtusua'];
 $nombre=$_POST['txtnomu'];
-$correo=$_POST['txttel'];
+$correo=$_POST['txtcorr'];
 $clave=MD5($_POST['txtcont']);
 $rol=$_POST['txtperm'];
-$sql = "INSERT INTO usuarios (usuario, nombre, correo, clave, rol) VALUES (:usuario, :nombre,:correo,:clave,:rol)";
+$sql = "INSERT INTO usuarios (usuario, nombre, correo, clave, rol) VALUES (:usuario, :nombre, :correo, :clave, :rol)";
 //Prepare our statement.
 $statement = $connect->prepare($sql);
 

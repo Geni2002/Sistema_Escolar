@@ -1,10 +1,12 @@
 <?php
    session_start();
 
-  if(!isset($_SESSION['rol']) || $_SESSION['rol'] != 1){
+  if(!isset($_SESSION['rol']) || $_SESSION['rol'] != 2){
     header('location: ../home.php');
   }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -63,37 +65,32 @@
                 </li>
 
 			<li  class="active">
-                    <a href="pages-admin.php" class="dashboard"><i class="material-icons">dashboard</i>
+                    <a href="../maestros/maestros" class="dashboard"><i class="material-icons">dashboard</i>
 					<span>Dashboard</span></a>
       </li>
 		
                <li class="">
-                    <a href="../period/mostrar"><i class="material-icons">calendar_month</i><span>Periodo escolar</span></a>
+                    <a href="../periodo/periodo"><i class="material-icons">calendar_month</i><span>Periodo escolar</span></a>
                 </li>
 				
-				 <li  class="">
-                    <a href="../users/mostrar"><i class="material-icons">person_outline</i><span>Usuarios
-
-					</span></a>
-                </li>
+				 
 
                 <li  class="">
-                    <a href="../students/mostrar"><i class="material-icons">sentiment_very_satisfied</i><span>Alumnos
+                    <a href="../alumnos/alumnos"><i class="material-icons">sentiment_very_satisfied</i><span>Alumnos
 
                     </span></a>
                 </li>
 
                 <li  class="">
-                    <a href="../fathers/mostrar"><i class="material-icons">supervisor_account</i><span>Tutores
+                    <a href="../tutores/tutores"><i class="material-icons">supervisor_account</i><span>Tutores
                     </span></a>
                 </li>
 
                
             </ul>
         </nav>
-		
-		
-		<!--------page-content---------------->
+
+        <!--------page-content---------------->
 		
 		
 		<div id="content">
